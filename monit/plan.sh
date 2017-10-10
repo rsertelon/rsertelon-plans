@@ -20,6 +20,6 @@ pkg_exposes=(port)
 do_build() {
     ./configure --prefix="$pkg_prefix" \
                 --without-pam \
-                --with-ssl="$(pkg_path_for core/openssl)"
+                --with-ssl-incl-dir="$(pkg_path_for core/openssl)/include"
     make
 }
