@@ -1,0 +1,2 @@
+[monit]
+paths = ["monit/*"]
