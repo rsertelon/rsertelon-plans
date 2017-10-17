@@ -10,7 +10,7 @@ To use opentracker via habitat, you need to have `hab` installed, and then run `
 
 The [habitat configuration](https://bldr.habitat.sh/#/pkgs/rsertelon/opentracker/latest) (bottom of the page) follows [opentracker sample config file](https://erdgeist.org/gitweb/opentracker/tree/opentracker.conf.sample).
 
-Most features of opentracker are activated compile time. To keep this build simple, there is no extra feature activated (which makes the configuration file a bit useless except for listen addresses). So these features are not included in this package:
+Most features of opentracker are activated compile time. To keep this build simple, there is no extra feature activated (which makes the configuration file a bit useless except for listen addresses). So these features are not included:
 
 * IPv6 - this would be ipv6 only
 * Gzip-ed full scrapes
