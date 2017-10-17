@@ -3,3 +3,6 @@ paths = ["monit/*"]
 
 [mosquitto]
 paths = ["mosquitto/*"]
+
+[zlib-static]
+paths = ["zlib-static/*"]
