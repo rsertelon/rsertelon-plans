@@ -6,3 +6,6 @@ paths = ["mosquitto/*"]
 
 [zlib-static]
 paths = ["zlib-static/*"]
+
+[libowfat]
+paths = ["libowfat/*"]
