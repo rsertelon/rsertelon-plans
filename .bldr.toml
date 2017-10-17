@@ -1,2 +1,5 @@
 [monit]
 paths = ["monit/*"]
+
+[mosquitto]
+paths = ["mosquitto/*"]
