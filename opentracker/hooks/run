@@ -1,0 +1,5 @@
+#!/bin/bash -xe
+
+exec 2>&1
+
+exec opentracker -f {{pkg.svc_config_path}}/opentracker.conf

@@ -9,3 +9,6 @@ paths = ["zlib-static/*"]
 
 [libowfat]
 paths = ["libowfat/*"]
+
+[opentracker]
+paths = ["opentracker/*"]
