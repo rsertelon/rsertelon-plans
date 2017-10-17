@@ -1,14 +1,19 @@
 [monit]
+plan_path = "monit"
 paths = ["monit/*"]
 
 [mosquitto]
+plan_path = "mosquitto"
 paths = ["mosquitto/*"]
 
 [zlib-static]
+plan_path = "zlib-static"
 paths = ["zlib-static/*"]
 
 [libowfat]
+plan_path = "libowfat"
 paths = ["libowfat/*"]
 
 [opentracker]
+plan_path = "opentracker"
 paths = ["opentracker/*"]
