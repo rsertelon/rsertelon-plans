@@ -9,7 +9,7 @@ alert_recipients = []
 [httpd]
     enabled = true
     port = 2812
-    listen = 'localhost'
+    listen_only = ''
     allow = ['localhost', 'admin:monit']
 
 [mmonit]
