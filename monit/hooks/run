@@ -1,8 +1,9 @@
-#!/bin/bash -xe
+#!/bin/sh
 
 exec 2>&1
 
 export CONFIG_FILE={{pkg.svc_config_path}}/monit.conf
 
-chmod 700 $CONFIG_FILE
+chmod 600 $CONFIG_FILE
 exec monit -I -c $CONFIG_FILE
+
