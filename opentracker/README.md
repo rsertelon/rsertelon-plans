@@ -19,3 +19,4 @@ Most features of opentracker are activated compile time. To keep this build simp
 * Stats restriction
 * IP from query string
 * Experimental or deprecated features
+
