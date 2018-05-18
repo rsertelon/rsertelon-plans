@@ -1,12 +1,12 @@
 pkg_name=libtorrent
 pkg_origin=rsertelon
-pkg_version="1.1.6"
+pkg_version="1.1.7"
 pkg_upstream_url="http://libtorrent.org/"
 pkg_description="Feature complete C++ BitTorrent implementation"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('BSD-2-Clause')
-pkg_source="https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_1_6/libtorrent-rasterbar-1.1.6.tar.gz"
-pkg_shasum="b7c74d004bd121bd6e9f8975ee1fec3c95c74044c6a6250f6b07f259f55121ef"
+pkg_source="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${pkg_version//./_}/libtorrent-rasterbar-${pkg_version}.tar.gz"
+pkg_shasum="8133bf683308decc24da22aff17437e36c522d8959bcf934e94cf7a3a567f3a9"
 pkg_dirname="libtorrent-rasterbar-${pkg_version}"
 pkg_deps=(
     core/boost
@@ -46,7 +46,7 @@ do_build() {
         --enable-python-binding \
         --with-libiconv \
         --with-libiconv-prefix=$(pkg_path_for core/libiconv)
-    make
+    make -j"$(nproc)"
 }
 
 do_install() {
