@@ -1,5 +1,0 @@
-#!/bin/sh
-
-exec 2>&1
-
-exec monit -c {{pkg.svc_config_path}}/monit.conf reload
