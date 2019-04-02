@@ -1,9 +1,3 @@
-[monit]
-plan_path = "monit"
-
-[mosquitto]
-plan_path = "mosquitto"
-
 [zlib-static]
 plan_path = "zlib-static"
 
