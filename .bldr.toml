@@ -15,3 +15,6 @@ plan_path = "libtorrent"
 
 [opentracker]
 plan_path = "opentracker"
+
+[thttpd]
+plan_path = "thttpd"
