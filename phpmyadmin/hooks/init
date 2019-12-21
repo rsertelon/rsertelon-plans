@@ -1,0 +1,13 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+chown hab:hab {{pkg.svc_var_path}}
+
+# phpMyAdmin
+cp -r {{pkg.path}}/phpmyadmin/* {{pkg.svc_data_path}}/
+cp {{pkg.svc_config_path}}/phpmyadmin.config.inc.php {{pkg.svc_data_path}}/config.inc.php
+
+chown -R hab:hab {{pkg.svc_data_path}}

@@ -10,6 +10,9 @@ plan_path = "opentracker"
 [php-fpm]
 plan_path = "php-fpm"
 
+[phpmyadmin]
+plan_path = "phpmyadmin"
+
 [resilio-sync]
 plan_path = "resilio-sync"
 
