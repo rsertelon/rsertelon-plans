@@ -1,6 +1,3 @@
-[zlib-static]
-plan_path = "zlib-static"
-
 [libowfat]
 plan_path = "libowfat"
 
@@ -10,5 +7,11 @@ plan_path = "libtorrent"
 [opentracker]
 plan_path = "opentracker"
 
+[resilio-sync]
+plan_path = "resilio-sync"
+
 [thttpd]
 plan_path = "thttpd"
+
+[zlib-static]
+plan_path = "zlib-static"

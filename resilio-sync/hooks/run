@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec 2>&1
+
+rslsync --config "{{pkg.svc_config_path}}/sync.cfg" --nodaemon --log "{{pkg.svc_var_path}}/logs"
