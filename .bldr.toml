@@ -7,6 +7,9 @@ plan_path = "libtorrent"
 [opentracker]
 plan_path = "opentracker"
 
+[php-fpm]
+plan_path = "php-fpm"
+
 [resilio-sync]
 plan_path = "resilio-sync"
 
