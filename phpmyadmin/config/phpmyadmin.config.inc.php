@@ -16,6 +16,8 @@
  */
 $cfg['blowfish_secret'] = '{{cfg.phpmyadmin.blowfish_secret}}'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
 
+$cfg['PmaAbsoluteUri'] = '{{cfg.phpmyadmin.absolute_uri}}';
+
 /**
  * Servers configuration
  */
@@ -28,10 +30,10 @@ $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = '{{cfg.phpmyadmin.server_host}}';
-$cfg['Servers'][$i]['port'] = '{{cfg.phpmyadmin.server_port}}';
+$cfg['Servers'][$i]['host'] = '{{cfg.phpmyadmin.server.host}}';
+$cfg['Servers'][$i]['port'] = '{{cfg.phpmyadmin.server.port}}';
 $cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['AllowNoPassword'] = {{cfg.phpmyadmin.allow_no_password}};
+$cfg['Servers'][$i]['AllowNoPassword'] = {{cfg.phpmyadmin.server.allow_no_password}};
 
 /**
  * phpMyAdmin configuration storage settings.

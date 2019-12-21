@@ -4,6 +4,9 @@
 
 [phpmyadmin]
   blowfish_secret = "932.gOLqeUvJ9pwOU2=d{j08i.K2cKQ."
-  server_host = "127.0.0.1"
-  server_port = 3306
+  absolute_uri = ""
+
+  [phpmyadmin.server]
+  host = "127.0.0.1"
+  port = 3306
   allow_no_password = true
