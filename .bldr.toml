@@ -13,6 +13,9 @@ plan_path = "php-fpm"
 [phpmyadmin]
 plan_path = "phpmyadmin"
 
+[postfixadmin]
+plan_path = "postfixadmin"
+
 [resilio-sync]
 plan_path = "resilio-sync"
 

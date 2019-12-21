@@ -1,0 +1,13 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+chown hab:hab {{pkg.svc_var_path}}
+
+# postfixadmin
+cp -r {{pkg.path}}/postfixadmin/* {{pkg.svc_data_path}}/
+cp {{pkg.svc_config_path}}/postfixadmin.config.local.php {{pkg.svc_data_path}}/config.local.php
+
+chown -R hab:hab {{pkg.svc_data_path}}
