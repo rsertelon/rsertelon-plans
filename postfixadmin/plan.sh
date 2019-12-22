@@ -25,6 +25,6 @@ do_build(){
 }
 
 do_install() {
-  mkdir -p "${pkg_prefix}/postfixadmin/"
+  mkdir -p "${pkg_prefix}/postfixadmin/templates_c"
   cp -r * "${pkg_prefix}/postfixadmin/"
 }
