@@ -4,8 +4,8 @@
 
 [postfixadmin]
   # to fill in this value, generate a salt and compute: "salt + ':' sha1( salt + ':' + password )"
-  # defaults to "password"
-  setup_password = "4077dd588ed82f733284be92f8c286b5:0f7771fb4ef2cbb8e39da4d5a0bd45d4d7880a95"
+  # defaults to "p4ssw0rd"
+  setup_password = "4077dd588ed82f733284be92f8c286b5:521760ec06890102f0112c680c595c1a463c0541"
   default_language = "en"
   homepage_url = "https://postfixadmin.domain.tld"
 
