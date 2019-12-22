@@ -56,7 +56,7 @@ database_hostname = {{cfg.ampache.database.hostname}}
 
 ; Port to use when connecting to your database
 ; DEFAULT: none
-;database_port = {{cfg.ampache.database.port}}
+database_port = {{cfg.ampache.database.port}}
 
 ; Name of your Ampache database
 ; DEFAULT: ampache
@@ -308,7 +308,7 @@ catalog_prefix_pattern = "The|An|A|Die|Das|Ein|Eine|Les|Le|La"
 ; still need to enabled downloading for the specific user you
 ; want to be able to use this function
 ; DEFAULT: false
-;allow_zip_download = "{{cfg.ampache.features.zip_download}}"
+allow_zip_download = "{{cfg.ampache.features.zip_download}}"
 
 ; Allow Zip Types
 ; This setting allows/disallows zip download of specific object types
@@ -604,7 +604,7 @@ live_stream = "true"
 ; Set this to true to enable podcasts and the
 ; possibility for admins to subscribe to new podcasts.
 ; DEFAULT: false
-;podcast = "{{cfg.ampache.features.podcast}}"
+podcast = "{{cfg.ampache.features.podcast}}"
 
 ; Web Socket address
 ; Declare the web socket server address
