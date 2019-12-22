@@ -22,6 +22,9 @@ plan_path = "phpmyadmin"
 [postfixadmin]
 plan_path = "postfixadmin"
 
+[rainloop]
+plan_path = "rainloop"
+
 [resilio-sync]
 plan_path = "resilio-sync"
 

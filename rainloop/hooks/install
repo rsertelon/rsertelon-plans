@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p "{{pkg.svc_data_path}}/data/_data_/_default_/domains"
+echo -n "<?php //$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 96 | head -n 1)" > {{pkg.svc_data_path}}/data/SALT.php

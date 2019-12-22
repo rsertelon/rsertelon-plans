@@ -1,0 +1,26 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+chown hab:hab {{pkg.svc_var_path}}
+
+# rainloop
+cp -r {{pkg.path}}/rainloop/* {{pkg.svc_data_path}}/
+
+mkdir -p {{pkg.svc_data_path}}/data/_data_/_default_/configs/
+cp {{pkg.svc_config_path}}/rainloop.application.ini {{pkg.svc_data_path}}/data/_data_/_default_/configs/application.ini
+
+# fill password hash
+salt=$(cat {{pkg.svc_data_path}}/data/SALT.php)
+middle_hash=$(echo -n "${salt}_default_${salt}" | md5sum)
+middle_hash=${middle_hash%  -}
+hashed_password=$(echo -n "${middle_hash}{{cfg.rainloop.security.admin_password}}${middle_hash}" | md5sum)
+hashed_password=${hashed_password%  -}
+sed -i "s/ADMIN_PASSWORD/${hashed_password}/" {{pkg.svc_data_path}}/data/_data_/_default_/configs/application.ini
+
+# domain configuration
+cp {{pkg.svc_config_path}}/rainloop.domains.domain.ini {{pkg.svc_data_path}}/data/_data_/_default_/domains/{{cfg.rainloop.domain.name}}.ini
+
+chown -R hab:hab {{pkg.svc_data_path}}

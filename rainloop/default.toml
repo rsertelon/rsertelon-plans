@@ -1,0 +1,44 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+  [rainloop]
+  title = "Rainloop"
+
+  [rainloop.security]
+  admin_login = "login"
+  admin_password = "password"
+
+  [rainloop.contacts]
+  enable = true
+  database_host = "127.0.0.1"
+  database_port = 3306
+  database_name = "rainloop"
+  database_user = "root"
+  database_password = ""
+
+  [rainloop.domain]
+  name = "yourdomain.tld"
+
+  [rainloop.domain.imap]
+  host = "imap.yourdomain.tld"
+  port = 143
+  # one of: TLS (STARTSSL), SSL (SSL/TLS), None
+  secure = "TLS"
+  short_login = false
+
+  [rainloop.domain.sieve]
+  enable = false
+  host = "imap.yourdomain.tld"
+  port = 4190
+  # one of: TLS (STARTSSL), SSL (SSL/TLS), None
+  secure = "SSL"
+
+  [rainloop.domain.smtp]
+  host = "smtp.yourdomain.tld"
+  port = 587
+  # one of: TLS (STARTSSL), SSL (SSL/TLS), None
+  secure = "TLS"
+  short_login = false
+  auth_enabled = true
+
