@@ -5,6 +5,8 @@
 [ampache]
   host = "localhost"
   debug = false
+  # If Ampache is behind an https reverse proxy, force use HTTPS protocol.
+  force_ssl = false
 
   [ampache.database]
   hostname = "localhost"
