@@ -28,7 +28,7 @@ http_host = "{{cfg.ampache.host}}"
 ; The public http port of your server.
 ; If not set, retrieved automatically from client request.
 ; DEFAULT:
-;http_port = 80
+http_port = {{cfg.ampache.port}}
 
 ; The public path to your Ampache install
 ; Do not put a trailing / on this path

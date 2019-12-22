@@ -4,6 +4,7 @@
 
 [ampache]
   host = "localhost"
+  port = 80
   debug = false
   # If Ampache is behind an https reverse proxy, force use HTTPS protocol.
   force_ssl = false
