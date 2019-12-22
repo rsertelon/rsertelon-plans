@@ -9,6 +9,17 @@ pkg_source="https://release.larsjung.de/h5ai/h5ai-${pkg_version}.zip"
 pkg_shasum="612acd8cc724ab42c5266f7b9966a0212b561331d8770b5609891edb5cb69a8b"
 pkg_dirname="_h5ai"
 
+pkg_svc_user=root
+pkg_svc_group=$pkg_svc_user
+
+pkg_deps=(
+  core/nginx
+)
+
+pkg_binds=(
+  [php]="address port"
+)
+
 do_build() {
     return 0
 }

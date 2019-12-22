@@ -1,0 +1,16 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+chown hab:hab {{pkg.svc_var_path}}
+
+# h5ai
+rm -r {{cfg.h5ai.document_root}}/_h5ai
+mkdir -p {{cfg.h5ai.document_root}}/_h5ai
+cp -r {{pkg.path}}/_h5ai/private {{cfg.h5ai.document_root}}/_h5ai/
+cp -r {{pkg.path}}/_h5ai/public {{cfg.h5ai.document_root}}/_h5ai/
+cp {{pkg.svc_config_path}}/h5ai.options.json {{cfg.h5ai.document_root}}/_h5ai/private/conf/options.json
+
+chown -R hab:hab {{cfg.h5ai.document_root}}/_h5ai

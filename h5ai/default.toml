@@ -1,0 +1,9 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[h5ai]
+  document_root = "/set_me"
+
+  # sha512 of the password
+  password = "b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86"
