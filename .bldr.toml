@@ -1,3 +1,6 @@
+[ampache]
+plan_path = "ampache"
+
 [libowfat]
 plan_path = "libowfat"
 

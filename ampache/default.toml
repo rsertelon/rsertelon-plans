@@ -1,0 +1,50 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[ampache]
+  host = "localhost"
+  debug = false
+
+  [ampache.database]
+  hostname = "localhost"
+  port = 3306
+  name = "ampache"
+  username = "username"
+  password = "password"
+
+  [ampache.session]
+  secret_key = "abcdefghijklmnoprqstuvwyz0123456"
+  # in seconds
+  remember_length = 604800
+  # can be true only if https is used
+  cookie_secure = false
+
+  [ampache.features]
+  zip_download = false
+  podcast = false
+  show_footer_statistics = true
+  
+  [ampache.lastfm]
+  api_key = ""
+  api_secret = ""
+  show_similar = false
+
+  [ampache.mail]
+  enable = false
+  # values: smtp, sendmail, php
+  type = "php"
+  domain = "example.com"
+  user = "info"
+
+  [ampache.mail.sendmail]
+  path = "/user/sbin/sendmail"
+
+  [ampache.mail.smtp]
+  host = "localhost"
+  port = 25
+  # values: ssl, tls
+  security = ""
+  auth = false
+  user = ""
+  password = ""
