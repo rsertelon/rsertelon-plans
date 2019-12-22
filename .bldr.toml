@@ -1,6 +1,9 @@
 [ampache]
 plan_path = "ampache"
 
+[h5ai]
+plan_path = "h5ai"
+
 [libowfat]
 plan_path = "libowfat"
 
