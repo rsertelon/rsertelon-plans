@@ -42,7 +42,7 @@ http_port = {{cfg.ampache.port}}
 ; The local http url of your server.
 ; If not set, retrieved automatically from server information.
 ; DEFAULT: ""
-;local_web_path = "http://localhost/ampache"
+local_web_path = "http://{{cfg.bind.address}}:{{cfg.bind.port}}"
 
 
 ;#########################################################
