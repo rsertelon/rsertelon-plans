@@ -1,3 +1,6 @@
+[agendav]
+plan_path = "agendav"
+
 [ampache]
 plan_path = "ampache"
 

@@ -1,0 +1,35 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[agendav]
+  title = "Our calendar"
+  csrf_secret = "lkjihgfedcba"
+
+  [agendav.database]
+  name = "agendav"
+  user = "root"
+  password = ""
+  host = "127.0.0.1"
+
+  [agendav.caldav]
+  base_url = "http://localhost:81/"
+  show_public_urls = true
+  public_base_url = "https://caldav.server.com"
+
+  [agendav.defaults]
+  timezone = "Europe/Madrid"
+  language = "en"
+  # 12 or 24
+  time_format = 24
+  # ymd: YYYY-mm-dd
+  # dmy: dd-mm-YYYY
+  # mdy: mm-dd-YYYY
+  date_format = "ymd"
+  # 0: Sunday, 1: Monday
+  weekstart = 0
+  show_week_nb = false
+  show_now_indicator = true
+  list_days = 7
+  # month, week, day or list
+  default_view = "month"
