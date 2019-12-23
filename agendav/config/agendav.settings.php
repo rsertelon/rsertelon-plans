@@ -27,6 +27,7 @@ $app['db.options'] = [
         'user' => '{{cfg.agendav.database.user}}',
         'password' => '{{cfg.agendav.database.password}}',
         'host' => '{{cfg.agendav.database.host}}',
+        'port' => '{{cfg.agendav.database.port}}',
         'driver' => 'pdo_mysql'
 ];
 
