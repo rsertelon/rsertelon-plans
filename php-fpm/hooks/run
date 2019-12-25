@@ -2,4 +2,4 @@
 
 exec 2>&1
 
-php-fpm -F -p "{{pkg.prefix}}" -y "{{pkg.svc_config_path}}/php-fpm.conf"
+exec php-fpm -F -p "{{pkg.prefix}}" -y "{{pkg.svc_config_path}}/php-fpm.conf"
