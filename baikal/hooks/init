@@ -1,0 +1,26 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+chown hab:hab {{pkg.svc_var_path}}
+
+# Baikal
+cp -r {{pkg.path}}/baikal/* {{pkg.svc_data_path}}/
+
+config_dir="{{pkg.svc_data_path}}/Specific"
+mkdir -p $config_dir
+cp "{{pkg.svc_config_path}}/baikal.config.php" "${config_dir}/config.php"
+cp "{{pkg.svc_config_path}}/baikal.config.system.php" "${config_dir}/config.system.php"
+
+# fill encryption key from install-time generated value
+encryption_key=$(cat {{pkg.svc_path}}/encryption_key)
+sed -i "s/BAIKAL_ENCRYPTION_KEY_VALUE/${encryption_key}/" "${config_dir}/config.system.php"
+
+# compute and fill admin password hash
+string_to_hash="admin:{{cfg.baikal.auth.realm}}:{{cfg.baikal.auth.admin_password}}"
+hashed_password=$(echo -n "${string_to_hash}" | md5sum)
+sed -i "s/BAIKAL_ADMIN_PASSWORDHASH_VALUE/${hashed_password}/" "${config_dir}/config.php"
+
+chown -R hab:hab {{pkg.svc_data_path}}

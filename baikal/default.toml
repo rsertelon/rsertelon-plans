@@ -1,0 +1,19 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[baikal]
+  timezone = "Europe/Paris"
+  invite_from = "dav@sertelon.fr"
+  
+  [baikal.auth]
+  # values: Digest, Basic
+  type = "Digest"
+  realm = "BaikalDAV"
+  admin_password = "password"
+
+  [baikal.database]
+  host = "127.0.0.1:3306"
+  name = "baikal"
+  username = "baikal"
+  password = "baikal"

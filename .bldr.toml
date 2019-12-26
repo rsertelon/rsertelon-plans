@@ -4,6 +4,9 @@ plan_path = "agendav"
 [ampache]
 plan_path = "ampache"
 
+[baikal]
+plan_path = "baikal"
+
 [h5ai]
 plan_path = "h5ai"
 
