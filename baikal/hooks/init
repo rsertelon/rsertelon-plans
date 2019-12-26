@@ -21,6 +21,6 @@ sed -i "s/BAIKAL_ENCRYPTION_KEY_VALUE/${encryption_key}/" "${config_dir}/config.
 # compute and fill admin password hash
 string_to_hash="admin:{{cfg.baikal.auth.realm}}:{{cfg.baikal.auth.admin_password}}"
 hashed_password=$(echo -n "${string_to_hash}" | md5sum)
-sed -i "s/BAIKAL_ADMIN_PASSWORDHASH_VALUE/${hashed_password}/" "${config_dir}/config.php"
+sed -i "s/BAIKAL_ADMIN_PASSWORDHASH_VALUE/${hashed_password%  -}/" "${config_dir}/config.php"
 
 chown -R hab:hab {{pkg.svc_data_path}}
