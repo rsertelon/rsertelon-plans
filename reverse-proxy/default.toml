@@ -1,0 +1,26 @@
+bind_address = "127.0.0.1"
+
+[ssl]
+  protocols = [
+    "TLSv1.2"
+  ]
+  ciphers = [
+    # OpenSSL 1.1.x ciphers aren't used at this moment,
+    # If OpenSSL is updated, so will this package, and
+    # we'll be ready.
+    "ECDHE-ECDSA-CHACHA20-POLY1305", # OpenSSL 1.1.x
+    "ECDHE-ECDSA-CHACHA20-POLY1305-D", # OpenSSL 1.1.x
+    "ECDHE-RSA-CHACHA20-POLY1305", # OpenSSL 1.1.x
+    "ECDHE-RSA-CHACHA20-POLY1305-D", # OpenSSL 1.1.x
+    "ECDHE-ECDSA-AES256-GCM-SHA384", # OpenSSL 1.0.x
+    "ECDHE-ECDSA-AES128-GCM-SHA256", # OpenSSL 1.0.x
+    "ECDHE-RSA-AES256-GCM-SHA384", # OpenSSL 1.0.x
+    "ECDHE-RSA-AES128-GCM-SHA256" # OpenSSL 1.0.x
+  ]
+
+[[servers]]
+  domain_name = "example.org"
+  certificate_path = "example.org.crt"
+  certificate_key_path = "example.org.key"
+  address = "192.168.1.1"
+  port = 8080

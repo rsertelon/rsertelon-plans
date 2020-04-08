@@ -37,6 +37,9 @@ plan_path = "rainloop"
 [resilio-sync]
 plan_path = "resilio-sync"
 
+[reverse-proxy]
+plan_path = "reverse-proxy"
+
 [thttpd]
 plan_path = "thttpd"
 
