@@ -1,6 +1,10 @@
 bind_address = "127.0.0.1"
 bind_address_ipv6 = ""
 
+[hsts]
+  enabled = false
+  max_age = 31536000
+
 [ssl]
   protocols = [
     "TLSv1.2"
