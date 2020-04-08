@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Generating a stronger DHE parameter than OpenSSL default
+openssl dhparam -out {{pkg.svc_var_path}}/dhparam.pem 4096

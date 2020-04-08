@@ -1,6 +1,6 @@
 pkg_name=reverse-proxy
 pkg_origin=rsertelon
-pkg_version="0.2.0"
+pkg_version="0.2.1"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("GPL-3.0")
 pkg_description="TLS Reverse proxy for multiple services"

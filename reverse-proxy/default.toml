@@ -22,6 +22,9 @@ bind_address_ipv6 = ""
     "ECDHE-RSA-AES256-GCM-SHA384", # OpenSSL 1.0.x
     "ECDHE-RSA-AES128-GCM-SHA256" # OpenSSL 1.0.x
   ]
+  ecdh_curves = [
+    "secp384r1"
+  ]
 
 [[servers]]
   domain_name = "example.org"
