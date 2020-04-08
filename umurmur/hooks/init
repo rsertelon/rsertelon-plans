@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec 2>&1
+
+touch {{pkg.svc_data_path}}/banfile.txt
+chown -R hab:hab {{pkg.svc_data_path}}

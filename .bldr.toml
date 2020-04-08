@@ -37,5 +37,8 @@ plan_path = "resilio-sync"
 [thttpd]
 plan_path = "thttpd"
 
+[umurmur]
+plan_path = "umurmur"
+
 [zlib-static]
 plan_path = "zlib-static"

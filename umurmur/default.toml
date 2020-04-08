@@ -1,0 +1,66 @@
+welcome_text = "Welcome to uMurmur!"
+allow_text_messages = true
+
+[bind]
+  [bind.ipv4]
+    addr = "127.0.0.1"
+    port = 64738
+  # [bind.ipv6]
+  #   addr = "::1/128"
+  #   port = 64738
+
+[users]
+  max = 10
+  max_bandwidth_per_user = 48000 #In bits
+  show_ip_addresses = false
+
+[certificate]
+  # set to true to use your own certificates, otherwise
+  # umurmur will generate its own.
+  use_external = false
+  certificate_path = "/path/to/certificate.crt"
+  private_key_path = "/path/to/private_key.key"
+
+[ban]
+  enabled = false
+  # ban duration in seconds. 0 = forever
+  duration = 0
+  # Sync file while umurmurd is running? Otherwise, done at shutdown
+  sync_ban_file = false
+
+[channels]
+  default = "Lobby"
+  
+  # One for each channel. A parent must be defined before its children
+  [[channels.channel]]
+    name = "Root"
+    parent = ""
+    description = "Root channel. No entry."
+    noenter = true
+
+  [[channels.channel]]
+    name = "Lobby"
+    parent = "Root"
+    description = "Lobby channel"
+    
+  [[channels.channel]]
+    name = "Protected"
+    parent = "Root"
+    description = "Protected channel"
+    password = "protected"
+
+  [[channels.channel]]
+    name = "Silent"
+    parent = "Root"
+    description = "Silent channel"
+    silent = true
+    position = -1
+
+  # One for each link
+  [[channels.channel_link]]
+    source = "Lobby"
+    destination = "Protected"
+  
+  [[channels.channel_link]]
+    source = "Lobby"
+    destination = "Silent"
