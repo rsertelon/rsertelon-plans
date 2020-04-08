@@ -1,6 +1,11 @@
 welcome_text = "Welcome to uMurmur!"
 allow_text_messages = true
 
+# set to protect server access with a password
+server_password = ""
+# set to enable admin functionalities
+admin_password = ""
+
 [bind]
   [bind.ipv4]
     addr = "127.0.0.1"
