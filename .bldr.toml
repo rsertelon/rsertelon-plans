@@ -7,6 +7,9 @@ plan_path = "ampache"
 [baikal]
 plan_path = "baikal"
 
+[certbot]
+plan_path = "certbot"
+
 [h5ai]
 plan_path = "h5ai"
 
