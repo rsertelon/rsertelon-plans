@@ -1,5 +1,8 @@
 #!/bin/sh
 
-exec 2>&1
-
-exec chown hab:hab {{pkg.svc_var_path}}/nginx/htpasswd
+# nginx starts as root but then drops privileges to the "hab" user. This makes
+# it so the server doesn't have to run as root the whole time and is the
+# correct behavior. However, this means that all of the `pkg_svc_*` paths will
+# get changed to root:root mode 0700 after every reconfigure. This script will
+# make sure things get changed to being owned by hab:hab whenver that happens.
+chown -R hab:hab "{{pkg.svc_config_path}}"
