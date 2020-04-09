@@ -2,5 +2,8 @@
 
 exec 2>&1
 
-# Generating a stronger DHE parameter than OpenSSL default
-openssl dhparam -out {{pkg.svc_var_path}}/dhparam.pem 4096
+if [ ! -f {{pkg.svc_var_path}}/dhparam.pem ]
+then
+    # Generating a stronger DHE parameter than OpenSSL default
+    openssl dhparam -out {{pkg.svc_var_path}}/dhparam.pem 4096
+fi
