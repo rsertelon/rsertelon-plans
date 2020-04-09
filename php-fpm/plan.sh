@@ -10,7 +10,9 @@ pkg_svc_user="hab"
 pkg_svc_group="hab"
 
 pkg_deps=(
-  core/php
+  # PHP 7.4 breaks baikal's admin (at least)
+  # Until it's compatible, using 7.3
+  core/php/7.3.10
   core/readline
 )
 
