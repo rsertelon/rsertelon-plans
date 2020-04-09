@@ -30,6 +30,8 @@ bind_address_ipv6 = ""
   domain_name = "example.org"
   certificate_path = "example.org.crt"
   certificate_key_path = "example.org.key"
+
+  default_redirection = "" # set to a URL if no [[servers.locations]] path is "/"
   
   [[servers.locations]]
     path = "/"
