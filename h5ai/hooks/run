@@ -2,4 +2,6 @@
 
 exec 2>&1
 
+exec chown hab:hab {{pkg.svc_config_path}}/htpasswd
+
 exec nginx -c {{pkg.svc_config_path}}/nginx.conf
