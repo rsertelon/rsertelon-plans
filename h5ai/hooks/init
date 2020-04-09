@@ -4,6 +4,8 @@ exec 2>&1
 
 # Nginx
 mkdir -p {{pkg.svc_var_path}}/nginx
+cp {{pkg.svc_config_path}}/htpasswd {{pkg.svc_var_path}}/nginx/htpasswd
+
 chown hab:hab {{pkg.svc_var_path}}
 
 # h5ai
