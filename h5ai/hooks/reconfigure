@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec 2>&1
+
+exec chown hab:hab {{pkg.svc_var_path}}/nginx/htpasswd
