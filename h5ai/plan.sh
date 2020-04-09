@@ -1,4 +1,4 @@
-pkg_name=h5ai
+pkg_name=h5ai$index
 pkg_origin=rsertelon
 pkg_version=0.29.2
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
