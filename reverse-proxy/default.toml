@@ -30,7 +30,7 @@ bind_address_ipv6 = ""
   domain_name = "example.org"
   certificate_path = "example.org.crt"
   certificate_key_path = "example.org.key"
-  # Set to true if the X-Forwarded-Proto header should be added
-  add_x_forwarded_proto = false
+  # Set to true if the X-Forwarded-* headers should be added
+  add_x_forwarded_headers = false
   address = "192.168.1.1"
   port = 8080
