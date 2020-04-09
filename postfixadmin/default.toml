@@ -2,6 +2,14 @@
   address = "127.0.0.1"
   port = 8080
 
+[auth]
+  enabled = false
+  name = "Restricted Area"
+  credentials = [
+    # output of htpasswd -nb admin admin
+    "admin:$apr1$Hf868va7$O.K0bMvda/3.pyjd1ZL3Z/"
+  ]
+
 [postfixadmin]
   # to fill in this value, generate a salt and compute: "salt + ':' sha1( salt + ':' + password )"
   # defaults to "p4ssw0rd"
