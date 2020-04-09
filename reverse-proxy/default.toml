@@ -30,5 +30,8 @@ bind_address_ipv6 = ""
   domain_name = "example.org"
   certificate_path = "example.org.crt"
   certificate_key_path = "example.org.key"
-  address = "192.168.1.1"
-  port = 8080
+  
+  [[servers.locations]]
+    path = "/"
+    address = "192.168.1.1"
+    port = 8080
