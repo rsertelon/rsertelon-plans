@@ -13,7 +13,9 @@ pkg_svc_user=root
 pkg_svc_group=$pkg_svc_user
 
 pkg_deps=(
+  core/ffmpeg # for video thumbnails
   core/nginx
+  core/tar # for multi downloads
 )
 
 pkg_binds=(
