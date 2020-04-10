@@ -9,7 +9,7 @@ chown -R hab:hab {{pkg.svc_var_path}}
 chown -R hab:hab {{pkg.svc_config_path}}
 
 # h5ai
-rm -r {{cfg.h5ai.document_root}}/_h5ai
+find {{cfg.h5ai.document_root}}/_h5ai ! -name 'thumb-*' -type f -exec rm -f {} +
 mkdir -p {{cfg.h5ai.document_root}}/_h5ai
 cp -r {{pkg.path}}/_h5ai/private {{cfg.h5ai.document_root}}/_h5ai/
 cp -r {{pkg.path}}/_h5ai/public {{cfg.h5ai.document_root}}/_h5ai/
