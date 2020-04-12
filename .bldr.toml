@@ -7,6 +7,9 @@ plan_path = "ampache"
 [baikal]
 plan_path = "baikal"
 
+[boost]
+plan_path = "boost"
+
 [certbot]
 plan_path = "certbot"
 
