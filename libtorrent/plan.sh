@@ -1,20 +1,20 @@
 pkg_name=libtorrent
 pkg_origin=rsertelon
-pkg_version="1.1.7"
+pkg_version="1.2.5"
 pkg_upstream_url="http://libtorrent.org/"
 pkg_description="Feature complete C++ BitTorrent implementation"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('BSD-2-Clause')
 pkg_source="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${pkg_version//./_}/libtorrent-rasterbar-${pkg_version}.tar.gz"
-pkg_shasum="8133bf683308decc24da22aff17437e36c522d8959bcf934e94cf7a3a567f3a9"
+pkg_shasum="84b79f85ffa4e4a5f434bf5c53b0d5a63dfea17b7623143caaa695faf61b2d1b"
 pkg_dirname="libtorrent-rasterbar-${pkg_version}"
 pkg_deps=(
-    core/boost
+    rsertelon/boost
     core/gcc-libs
     core/glibc
     core/libiconv
     core/openssl
-    core/python2
+    core/python
     core/zlib
 )
 pkg_build_deps=(
@@ -36,12 +36,12 @@ do_prepare() {
 }
 
 do_setup_environment() {
-    push_runtime_env PYTHONPATH "${pkg_prefix}/lib/python2.7/site-packages"
+    push_runtime_env PYTHONPATH "${pkg_prefix}/lib/python3.7/site-packages"
 }
 
 do_build() {
     ./configure --prefix=$pkg_prefix \
-        --with-boost-libdir=$(pkg_path_for core/boost)/lib \
+        --with-boost-libdir=$(pkg_path_for rsertelon/boost)/lib \
         --with-openssl=$(pkg_path_for core/openssl) \
         --enable-python-binding \
         --with-libiconv \
