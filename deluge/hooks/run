@@ -1,0 +1,16 @@
+#!/bin/sh
+
+exec 2>&1
+
+source "{{pkg.path}}/bin/activate"
+
+exec deluged \
+  -p {{cfg.bind.port}} \
+  -u {{cfg.bind.address}} \
+  --do-not-daemonize \
+  -c {{pkg.svc_var_path}}/config \
+  -L debug \
+  -l {{pkg.svc_var_path}}/deluge.log \
+  --logrotate \
+  -U {{pkg.svc_user}} \
+  -g {{pkg.svc_group}}

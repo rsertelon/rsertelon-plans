@@ -1,0 +1,25 @@
+[bind]
+  address = "127.0.0.1"
+  port = 58846
+  admin_username = "localclient"
+  admin_password = "858ce1db36be938176f1ee6f32327cc9b7300c6c"
+
+[network]
+  min_port = 6881
+  max_port = 6891
+  max_connections_global = 200
+  max_connections_per_second = 20
+  max_connections_per_torrent = -1
+
+[torrents]
+  max_active_downloading = 3
+  max_active_limit = 8
+  max_active_seeding = 5
+  pre_allocate_storage = false
+
+  [torrents.move_completed]
+    enabled = false
+    path = ""
+  [torrents.stop_seed_at_ratio]
+    enabled = false
+    value = "2.0"

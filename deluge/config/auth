@@ -1,0 +1,2 @@
+
+{{cfg.bind.admin_username}}:{{cfg.bind.admin_password}}:10
