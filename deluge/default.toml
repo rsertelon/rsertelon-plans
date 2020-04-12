@@ -22,4 +22,5 @@
     path = ""
   [torrents.stop_seed_at_ratio]
     enabled = false
+    remove = false
     value = "2.0"
