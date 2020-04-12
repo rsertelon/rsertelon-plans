@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+mkdir -p {{pkg.svc_var_path}}/config
+cp -r {{pkg.svc_config_path}}/* {{pkg.svc_var_path}}/config/
+
+chown hab:hab {{pkg.svc_var_path}}

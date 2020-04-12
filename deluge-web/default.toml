@@ -1,0 +1,17 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8112
+
+[daemon]
+  address = "127.0.0.1"
+  port = 58846
+  username = "localclient"
+  password = "858ce1db36be938176f1ee6f32327cc9b7300c6c"
+
+[web_ui]
+  session_duration = 3600 # in seconds
+  # Salt generated with $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 40 | head -n 1)
+  password_salt = "810086a23b0aa5420255bf4f6b0114842c66c3b5"
+  # hash = $(echo -n "${salt}password" | sha1sum)
+  # default password is "admin"
+  password_hash = "a343ced7d2bd8dfaffa8abc42dded542ba13b1c9"

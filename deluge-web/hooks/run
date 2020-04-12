@@ -1,0 +1,14 @@
+#!/bin/sh
+
+exec 2>&1
+
+exec deluge-web \
+  -i {{cfg.bind.address}} \
+  -p {{cfg.bind.port}} \
+  --do-not-daemonize \
+  -c {{pkg.svc_var_path}}/config \
+  -L debug \
+  -l {{pkg.svc_var_path}}/deluge-web.log \
+  --logrotate \
+  -U {{pkg.svc_user}} \
+  -g {{pkg.svc_group}}
