@@ -22,6 +22,9 @@ plan_path = "h5ai"
 [libowfat]
 plan_path = "libowfat"
 
+[libmilter]
+plan_path = "libmilter"
+
 [libtorrent]
 plan_path = "libtorrent"
 
