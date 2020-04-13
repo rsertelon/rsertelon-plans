@@ -1,0 +1,21 @@
+# Uncomment to send reports
+#report_address = "postmaster@example.com"
+syslog_enabled = false
+
+[bind]
+  address = "127.0.0.1"
+  port = 8891
+
+[dkim]
+  canonicalization_methods = ["relaxed", "simple"]
+  trusted_hosts = ["127.0.0.1", "localhost"]
+
+  # This is the list of all domains that OpenDKIM will work for. You can generate
+  # the configuration with:
+  #     hab pkg exec rsertelon/opendkim opendkim-genkey -s <selector> -d <domain>
+  # The generated txt file contains the TXT record to be added in your domain DNS
+  # zone. The private file is the private key for signing emails.
+  [[dkim.domains]]
+    name = "<domain>"
+    selector = "<selector>"
+    private_key_path = "/path/to/private/key"

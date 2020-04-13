@@ -28,6 +28,9 @@ plan_path = "libmilter"
 [libtorrent]
 plan_path = "libtorrent"
 
+[opendkim]
+plan_path = "opendkim"
+
 [opentracker]
 plan_path = "opentracker"
 

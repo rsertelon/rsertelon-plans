@@ -1,0 +1,3 @@
+{{#each cfg.dkim.domains as |domain| ~}}
+{{domain.name}} {{domain.selector}}._domainkey.{{domain.name}}
+{{/each ~}}
