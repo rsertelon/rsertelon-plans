@@ -7,7 +7,8 @@ bind_address_ipv6 = ""
 
 [ssl]
   protocols = [
-    "TLSv1.2"
+    "TLSv1.2",
+    "TLSv1.3"
   ]
   ciphers = [
     # OpenSSL 1.1.x ciphers aren't used at this moment,
@@ -31,8 +32,11 @@ bind_address_ipv6 = ""
   certificate_path = "example.org.crt"
   certificate_key_path = "example.org.key"
 
-  default_redirection = "" # set to a URL if no [[servers.locations]] path is "/"
-  
+  # [[servers.redirections]]
+  #   code = 302
+  #   source_path = "/to_redirect"
+  #   destination_url = "https://example.org"
+
   [[servers.locations]]
     path = "/"
     address = "192.168.1.1"
