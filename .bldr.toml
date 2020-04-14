@@ -16,6 +16,9 @@ plan_path = "certbot"
 [deluge]
 plan_path = "deluge"
 
+[dovecot]
+plan_path = "dovecot"
+
 [h5ai]
 plan_path = "h5ai"
 

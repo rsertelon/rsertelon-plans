@@ -1,0 +1,87 @@
+[mysql]
+  enabled = true
+  host = "127.0.0.1"
+  port = 3306
+  username = "dovecot"
+  password = "dovecot"
+  dbname = "dovecot"
+
+  # If set, a passdb will be added to the configuration
+  password_query = ""
+  password_scheme = "MD5-CRYPT" # http://wiki2.dovecot.org/Authentication/PasswordSchemes
+  # If set, a userdb will be added to the configuration
+  user_query = ""
+
+[ssl]
+  # if false, we still have ssl=yes see https://doc.dovecot.org/admin_manual/ssl/dovecot_configuration/
+  require_ssl = true 
+
+  certificate_path = ""
+  certificate_key_path = ""
+  ciphers = [
+    "ALL",
+    "!DH",
+    "!kRSA",
+    "!SRP",
+    "!kDHd",
+    "!DSS",
+    "!aNULL",
+    "!eNULL",
+    "!EXPORT",
+    "!DES",
+    "!3DES",
+    "!MD5",
+    "!PSK",
+    "!RC4",
+    "!ADH",
+    "!LOW@STRENGTH"
+  ]
+  min_protocol = "TLSv1.2"
+
+[auth]
+  auth_machanisms = ["plain"]
+  disable_plaintext_auth = "yes"
+
+  [auth.static_userdb]
+  enabled = true
+  uid = 500
+  gid = 500
+  home = "/home/vmail/%d/%n"
+
+[mail]
+  # The package uses maildir only, and passes LAYOUT=fs
+  location = "/home/vmail/%d/%n/Maildir"
+
+  [[mail.mailboxes]]
+  name = "Drafts"
+  auto = "subscribe"
+  special_use = "\Drafts"
+
+  [[mail.mailboxes]]
+  name = "Spam"
+  auto = "subscribe"
+  special_use = "\Junk"
+
+  [[mail.mailboxes]]
+  name = "Trash"
+  auto = "subscribe"
+  special_use = "\Trash"
+
+  [[mail.mailboxes]]
+  name = "Sent"
+  auto = "subscribe"
+  special_use = "\Sent"
+
+[lmtp]
+  postmaster_address = "postmaster@example.com"
+  hostname = "imap.example.com"
+
+[bind]
+  [bind.sasl]
+    addresses = ["127.0.0.1", "::1"]
+    port = 26
+  [bind.imap]
+    addresses = ["*", "::"]
+  [bind.lmtp]
+    addresses = ["127.0.0.1", "::1"]
+    port = 24
