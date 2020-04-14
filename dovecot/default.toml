@@ -39,7 +39,7 @@
   min_protocol = "TLSv1.2"
 
 [auth]
-  auth_machanisms = ["plain"]
+  auth_mechanisms = ["plain"]
   disable_plaintext_auth = "yes"
 
   [auth.static_userdb]
