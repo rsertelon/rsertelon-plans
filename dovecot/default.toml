@@ -55,22 +55,22 @@
   [[mail.mailboxes]]
   name = "Drafts"
   auto = "subscribe"
-  special_use = "\Drafts"
+  special_use = "\\Drafts"
 
   [[mail.mailboxes]]
   name = "Spam"
   auto = "subscribe"
-  special_use = "\Junk"
+  special_use = "\\Junk"
 
   [[mail.mailboxes]]
   name = "Trash"
   auto = "subscribe"
-  special_use = "\Trash"
+  special_use = "\\Trash"
 
   [[mail.mailboxes]]
   name = "Sent"
   auto = "subscribe"
-  special_use = "\Sent"
+  special_use = "\\Sent"
 
 [lmtp]
   postmaster_address = "postmaster@example.com"
