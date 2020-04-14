@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+if [ ! -f {{pkg.svc_var_path}}/dh.pem ]
+then
+    openssl dhparam -out {{pkg.svc_var_path}}/dh.pem 4096
+fi
