@@ -5,7 +5,7 @@
   password = "dovecot"
   dbname = "dovecot"
 
-  # If set, a passdb will be added to the configuration
+  # Mandatory.
   password_query = ""
   password_scheme = "MD5-CRYPT" # http://wiki2.dovecot.org/Authentication/PasswordSchemes
   # If set, a userdb will be added to the configuration
@@ -42,10 +42,10 @@
   disable_plaintext_auth = "yes"
 
   [auth.static_userdb]
-  enabled = true
-  uid = 500
-  gid = 500
-  home = "/home/vmail/%d/%n"
+    enabled = true
+    uid = 500
+    gid = 500
+    home = "/home/vmail/%d/%n"
 
 [mail]
   # The package uses maildir only, and passes LAYOUT=fs

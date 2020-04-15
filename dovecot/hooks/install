@@ -6,3 +6,13 @@ if [ ! -f {{pkg.svc_var_path}}/dh.pem ]
 then
     openssl dhparam -out {{pkg.svc_var_path}}/dh.pem 4096
 fi
+
+# User needed for authentication
+if [ $(getent passwd dovenull) == "" ]
+then
+  useradd -M dovenull
+fi
+# User needed for dropping privileges
+if [ $(getent passwd dovecot) == "" ]
+  useradd -M dovecot
+fi

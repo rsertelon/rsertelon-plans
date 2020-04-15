@@ -2,4 +2,4 @@
 
 exec 2>&1
 
-exec dovecot -c {{pkg.svc_config_path}}/dovecot.conf
+exec dovecot -F -c {{pkg.svc_config_path}}/dovecot.conf
