@@ -12,8 +12,9 @@ pkg_deps=(
   core/libffi
   core/openssl
   core/python
-  rsertelon/libtorrent
+  core/xz
   core/zlib
+  rsertelon/libtorrent
 )
 pkg_build_deps=(
   core/gcc
