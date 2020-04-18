@@ -23,11 +23,11 @@ pkg_build_deps=(
   core/patch
   core/make
   core/gcc
-  core/python
   core/libxml2
   core/libxslt
   core/openssl
   core/which
+  rsertelon/python
 )
 
 pkg_lib_dirs=(lib)
@@ -44,7 +44,7 @@ do_install() {
   export ZLIB_INCLUDE
   ZLIB_INCLUDE="$(pkg_path_for core/zlib)/include"
   export CPLUS_INCLUDE_PATH
-  CPLUS_INCLUDE_PATH="$(pkg_path_for core/python)/include/python3.7m"
+  CPLUS_INCLUDE_PATH="$(pkg_path_for rsertelon/python)/include/python3.7m"
 
   ./b2 install -q --debug-configuration
 }
