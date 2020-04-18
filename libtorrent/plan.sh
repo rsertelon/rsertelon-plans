@@ -9,13 +9,13 @@ pkg_source="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${
 pkg_shasum="84b79f85ffa4e4a5f434bf5c53b0d5a63dfea17b7623143caaa695faf61b2d1b"
 pkg_dirname="libtorrent-rasterbar-${pkg_version}"
 pkg_deps=(
-    rsertelon/boost
     core/gcc-libs
     core/glibc
     core/libiconv
     core/openssl
-    core/python
     core/zlib
+    rsertelon/boost
+    rsertelon/python
 )
 pkg_build_deps=(
     core/diffutils
