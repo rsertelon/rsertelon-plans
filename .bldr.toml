@@ -43,6 +43,9 @@ plan_path = "php-fpm"
 [phpmyadmin]
 plan_path = "phpmyadmin"
 
+[postfix]
+plan_path = "postfix"
+
 [postfixadmin]
 plan_path = "postfixadmin"
 
