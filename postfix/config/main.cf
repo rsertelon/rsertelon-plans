@@ -1,3 +1,5 @@
+compatibility_level = 2
+
 ## Bind
 inet_protocols = ipv4, ipv6
 smtp_bind_address = {{cfg.bind.ipv4_address}}
