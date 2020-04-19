@@ -24,7 +24,9 @@ pkg_deps=(
 )
 pkg_bin_dirs=(bin sbin libexec)
 pkg_lib_dirs=(lib)
-pkg_svc_user=root
+
+pkg_svc_user="root"
+pkg_svc_group="root"
 
 do_build() {
   local mycc="-DNO_DB -DNO_NIS -DNO_PCRE"
