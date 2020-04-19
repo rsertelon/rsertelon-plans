@@ -1,0 +1,155 @@
+## Bind
+inet_protocols = ipv4, ipv6
+smtp_bind_address = {{cfg.bind.ipv4_address}}
+smtp_bind_address6 = {{cfg.bind.ipv6_address}}
+
+## Users
+mail_owner = postfix
+setgid_group = postdrop
+
+## Host and domain names
+myhostname = {{cfg.myhostname}}
+mydomain = {{cfg.mydomain}}
+
+## Sending mail
+myorigin = $mydomain
+
+## Receiving mail
+
+message_size_limit = {{cfg.message_max_size}}
+
+# Disable relay
+relay_domains = 
+
+# Disable local transport (ie: unix users mails)
+local_transport = error
+mydestination = localhost
+
+# Configure virtual transport using lmtp
+virtual_transport = 
+    lmtp:inet:{{cfg.lmtp.address}}:{{cfg.lmtp.port}}
+virtual_mailbox_domains = 
+    proxy:mysql:{{pkg.svc_config_path}}/mysql_virtual_domains_maps.cf
+virtual_alias_maps = 
+    proxy:mysql:{{pkg.svc_config_path}}/mysql_virtual_alias_maps.cf,
+    proxy:mysql:{{pkg.svc_config_path}}/mysql_virtual_alias_maps_regexp.cf
+
+##
+## SMTPD Restrictions
+##
+
+# To prevent email addresses discovery
+disable_vrfy_command = yes
+
+# Ensure the client speaks the same language
+strict_rfc821_envelopes = yes
+
+# Ensure the client is polite
+smtpd_helo_required = yes
+
+# Ensure client is respectable
+smtpd_client_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unknown_reverse_client_hostname,
+{{#each cfg.smtpd.rbls as |rbl| ~}}
+  reject_rbl_client {{rbl}},
+{{/each ~}}
+  permit
+
+# Ensure client presents itself propertly
+smtpd_helo_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_invalid_helo_hostname,
+  reject_non_fqdn_helo_hostname
+
+# Ensure sender doesn't lie on its origin
+smtpd_sender_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_non_fqdn_sender,
+  reject_unknown_sender_domain,
+  permit
+
+# Ensure client isn't trying to decide routing
+smtpd_relay_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_destination
+
+# Ensure client wants to send mail to us
+smtpd_recipient_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  permit_auth_destination,
+  reject
+
+# Ensure it waits before speaking to us
+smtpd_data_restrictions =
+  reject_unauth_pipelining
+
+# Ensure mails sent are sent from actual mailboxes
+# This way no one can send a mail from this server
+# from nonexistent@domain.tld
+smtpd_reject_unlisted_sender = yes
+
+##
+## SASL
+##
+
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = inet:{{cfg.dovecot_sasl.address}}:{{cfg.dovecot_sasl.port}}
+smtpd_sasl_authenticated_header = yes
+smtpd_sasl_security_options = noanonymous
+
+##
+## TLS
+##
+
+## SMTPD (incoming connections)
+# Make sure authentication never happen when unencrypted
+smtpd_tls_security_level = may
+smtpd_tls_auth_only = yes
+smtpd_tls_cert_file = {{cfg.tls.certificate_path}}
+smtpd_tls_key_file = {{cfg.tls.certificate_key_path}}
+smtpd_tls_protocols = !SSLv2, !SSLv3
+smtpd_tls_exclude_ciphers = MD5, aNULL, DES, RC4, CBC3, 3DES
+smtpd_tls_dh512_param_file {{pkg.svc_var_path}}/dhparam512.pem
+smtpd_tls_dh1024_param_file {{pkg.svc_var_path}}/dhparam1024.pem
+
+## SMTP (outgoing connections)
+smtp_tls_security_level = dane
+smtp_tls_protocols = !SSLv2, !SSLv3
+smtp_tls_exclude_ciphers = MD5, aNULL, DES, RC4, CBC3, 3DES
+
+
+##
+## Milters
+##
+
+{{#each cfg.smtpd.milters as |milter| ~}}
+smtpd_milters =
+  inet:{{milter.address}}:{{milter.port}}
+non_smtpd_milters =
+  inet:{{milter.address}}:{{milter.port}}
+{{/each ~}}
+
+##
+## Directories
+##
+
+command_directory = {{pkg.path}}/sbin
+config_directory = {{pkg.svc_config_path}}
+daemon_directory = {{pkg.path}}/libexec
+data_directory = {{pkg.svc_data_path}}
+mail_spool_directory = {{pkg.svc_var_path}}/mail
+mailq_path = {{pkg.path}}/bin/mailq
+manpage_directory = {{pkg.path}}/man
+meta_directory = {{pkg.path}}/meta
+newaliases_path = {{pkg.path}}/bin/newaliases
+queue_directory = {{pkg.svc_var_path}}/spool
+sample_directory = {{pkg.path}}/meta
+sendmail_path = {{pkg.path}}/sbin/sendmail
+shlib_directory = {{pkg.path}}/lib

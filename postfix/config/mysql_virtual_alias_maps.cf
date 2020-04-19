@@ -1,0 +1,5 @@
+user = {{cfg.mysql.user}}
+password = {{cfg.mysql.password}}
+hosts = {{cfg.mysql.address}}:{{cfg.mysql.port}}
+dbname = {{cfg.mysql.dbname}}
+query = {{cfg.mysql.query.aliases}}

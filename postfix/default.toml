@@ -1,0 +1,47 @@
+myhostname = "host.domain.tld"
+mydomain = "domain.tld"
+
+message_max_size = "10240000"
+
+[bind]
+  ipv4_address = "127.0.0.1"
+  ipv6_address = "::1"
+
+[users]
+  mail_owner = "postfix"
+  setgid_group = "postdrop"
+
+[ltmp]
+  address = "127.0.0.1"
+  port = 24
+
+[dovecot_sasl]
+  address = "127.0.0.1"
+  port = 26
+
+[mysql]
+  user = "postfix"
+  password = "postfix"
+  address = "127.0.0.1"
+  port = 3306
+  dbname = "postfix"
+
+  [mysql.query]
+    domains = "select domain from domain where domain = '%s'"
+    aliases = "select goto from alias where address = '%s'"
+    aliases_regex = "select goto from alias where '%s' regexp concat('^',address,'$')"
+
+[smtpd]
+  rbls = [
+    "proxies.blackholes.wirehub.net",
+    "cbl.abuseat.org",
+    "sbl-xbl.spamhaus.org",
+    "psbl.surriel.com"
+  ]
+  # [[smtpd.milters]]
+  #   address = "127.0.0.1"
+  #   port = 8891
+
+[tls]
+  certificate_path = "/path/to/cert"
+  certificate_path_key = "/path/to/key"
