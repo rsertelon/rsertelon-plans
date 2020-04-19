@@ -24,6 +24,8 @@ message_size_limit = {{cfg.message_max_size}}
 relay_domains = 
 
 # Disable local transport (ie: unix users mails)
+alias_database =
+alias_maps =
 local_transport = error
 mydestination = localhost
 
