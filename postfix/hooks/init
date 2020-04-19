@@ -2,9 +2,6 @@
 
 exec 2>&1
 
-## Create needed directories
-mkdir -p {{pkg.svc_var_path}}/spool
-
 ## Adjust rights and permissions
 # Config path
 chmod 755 {{pkg.svc_config_path}}
@@ -13,7 +10,8 @@ chmod 644 {{pkg.svc_config_path}}/*
 chown -R postfix:postfix {{pkg.svc_data_path}}
 chmod -R 700 {{pkg.svc_data_path}}
 # Var path
-chmod -R 755 {{pkg.svc_data_path}}/spool
+mkdir -p {{pkg.svc_var_path}}/spool
+chmod -R 755 {{pkg.svc_var_path}}/spool
 # postdrop executables
 chgrp postdrop {{pkg.path}}/sbin/postqueue
 chgrp postdrop {{pkg.path}}/sbin/postdrop
