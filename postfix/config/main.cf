@@ -116,8 +116,8 @@ smtpd_tls_cert_file = {{cfg.tls.certificate_path}}
 smtpd_tls_key_file = {{cfg.tls.certificate_key_path}}
 smtpd_tls_protocols = !SSLv2, !SSLv3
 smtpd_tls_exclude_ciphers = MD5, aNULL, DES, RC4, CBC3, 3DES
-smtpd_tls_dh512_param_file {{pkg.svc_var_path}}/dhparam512.pem
-smtpd_tls_dh1024_param_file {{pkg.svc_var_path}}/dhparam1024.pem
+smtpd_tls_dh512_param_file = {{pkg.svc_var_path}}/dhparam512.pem
+smtpd_tls_dh1024_param_file = {{pkg.svc_var_path}}/dhparam1024.pem
 
 ## SMTP (outgoing connections)
 smtp_tls_security_level = dane
