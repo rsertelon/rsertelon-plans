@@ -7,6 +7,9 @@ plan_path = "ampache"
 [baikal]
 plan_path = "baikal"
 
+[boinc-client]
+plan_path = "boinc-client"
+
 [boost]
 plan_path = "boost"
 

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+exec boinc_client \
+  --attach_project {{cfg.project.url}} {{cfg.project.key}} \
+  --dir {{pkg.svc_data_path}} \
+  --no_gui_rpc
