@@ -3,12 +3,7 @@
 exec 2>&1
 
 # Generate unique DH parameters
-if [ ! -f {{pkg.svc_var_path}}/dhparam512.pem ]
+if [ ! -f {{pkg.svc_var_path}}/dhparam2048.pem ]
 then
-    openssl dhparam -out {{pkg.svc_var_path}}/dhparam512.pem 512
-fi
-
-if [ ! -f {{pkg.svc_var_path}}/dhparam1024.pem ]
-then
-    openssl dhparam -out {{pkg.svc_var_path}}/dhparam1024.pem 1024
+    openssl dhparam -out {{pkg.svc_var_path}}/dhparam2048.pem 2048
 fi
