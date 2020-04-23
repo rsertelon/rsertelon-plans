@@ -49,3 +49,5 @@ message_max_size = "10240000"
   protocols = ["!SSLv2", "!SSLv3"]
   # This is the default medium cipher list from postfix
   ciphers = ["aNULL", "-aNULL", "HIGH", "MEDIUM", "+RC4", "@STRENGTH"]
+  # This is the default from postfix
+  prefer_server_ciphers = false

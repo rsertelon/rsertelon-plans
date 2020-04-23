@@ -113,6 +113,11 @@ smtpd_sasl_security_options = noanonymous
 ##
 
 tls_medium_cipherlist = {{ strJoin cfg.tls.ciphers ":" }}
+{{#if cfg.tls.prefer_server_ciphers ~}}
+tls_preempt_cipherlist = yes
+{{else ~}}
+tls_preempt_cipherlist = no
+{{/if ~}}
 
 ## SMTPD (incoming connections)
 # Make sure authentication never happen when unencrypted
