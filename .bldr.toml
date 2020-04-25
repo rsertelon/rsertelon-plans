@@ -34,6 +34,9 @@ plan_path = "libmilter"
 [libtorrent]
 plan_path = "libtorrent"
 
+[mkdocs]
+plan_path = "mkdocs"
+
 [opendkim]
 plan_path = "opendkim"
 
