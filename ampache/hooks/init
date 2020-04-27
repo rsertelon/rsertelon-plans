@@ -7,6 +7,7 @@ mkdir -p {{pkg.svc_var_path}}/nginx
 chown hab:hab {{pkg.svc_var_path}}
 
 # ampache
+rm -r {{pkg.svc_data_path}}/*
 cp -r {{pkg.path}}/ampache/* {{pkg.svc_data_path}}/
 cp {{pkg.svc_config_path}}/ampache.cfg.php {{pkg.svc_data_path}}/config/
 
