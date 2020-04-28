@@ -2,12 +2,12 @@ pkg_name=boost
 pkg_origin=rsertelon
 pkg_description='Boost provides free peer-reviewed portable C++ source libraries.'
 pkg_upstream_url='http://www.boost.org/'
-pkg_version=1.72.0
+pkg_version=1.73.0
 pkg_maintainer='Romain Sertelon <romain@sertelon.fr>'
 pkg_license=('Boost Software License')
 pkg_dirname="boost_${pkg_version//./_}"
 pkg_source="https://dl.bintray.com/boostorg/release/${pkg_version}/source/${pkg_dirname}.tar.gz"
-pkg_shasum="c66e88d5786f2ca4dbebb14e06b566fb642a1a6947ad8cc9091f9f445134143f"
+pkg_shasum="9995e192e68528793755692917f9eb6422f3052a53c5e13ba278a228af6c7acf"
 
 pkg_deps=(
   core/glibc
