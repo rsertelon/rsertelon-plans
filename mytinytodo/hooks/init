@@ -1,0 +1,26 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+
+chown -R hab:hab {{pkg.svc_var_path}}
+chown -R hab:hab {{pkg.svc_config_path}}
+
+# mytinytodo
+if [ -d {{pkg.svc_data_path}}/db ]
+then
+  _restore_db=true
+  mv {{pkg.svc_data_path}}/db {{pkg.svc_data_path}}/db.orig
+fi
+
+cp -R {{pkg.path}}/mytinytodo/* {{pkg.svc_data_path}}/
+
+if [[ -n "$_restore_db" ]]
+then
+  rm -r {{pkg.svc_data_path}}/db
+  mv {{pkg.svc_data_path}}/db.orig {{pkg.svc_data_path}}/db
+fi
+
+chown -R hab:hab {{pkg.svc_data_path}}

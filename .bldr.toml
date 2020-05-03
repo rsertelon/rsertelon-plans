@@ -37,6 +37,9 @@ plan_path = "libtorrent"
 [mkdocs]
 plan_path = "mkdocs"
 
+[mytinytodo]
+plan_path = "mytinytodo"
+
 [opendkim]
 plan_path = "opendkim"
 
