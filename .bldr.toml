@@ -61,6 +61,9 @@ plan_path = "postfixadmin"
 [rainloop]
 plan_path = "rainloop"
 
+[rclone]
+plan_path = "rclone"
+
 [resilio-sync]
 plan_path = "resilio-sync"
 
