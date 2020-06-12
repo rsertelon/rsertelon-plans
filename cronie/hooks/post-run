@@ -1,0 +1,7 @@
+#!/bin/bash
+
+exec 2>&1
+
+{{#each cfg.crontabs as |crontab| ~}}
+echo '{{crontab.times}} {{crontab.command}}' | crontab -u {{crontab.user}} -
+{{/each}}

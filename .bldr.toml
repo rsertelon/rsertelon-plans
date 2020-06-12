@@ -16,6 +16,9 @@ plan_path = "boost"
 [certbot]
 plan_path = "certbot"
 
+[cronie]
+plan_path = "cronie"
+
 [deluge]
 plan_path = "deluge"
 

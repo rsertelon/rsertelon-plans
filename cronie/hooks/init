@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+rm -r {{pkg.svc_data_path}}/crontabs
+mkdir -p {{pkg.svc_data_path}}/crontabs
+
+chown -R hab:hab {{pkg.svc_data_path}}/crontabs
