@@ -2,6 +2,6 @@
 
 exec 2>&1
 
-{{#each cfg.crontabs as |crontab| ~}}
-echo '{{crontab.times}} {{crontab.command}}' | crontab -u {{crontab.user}} -
+{{#each cfg.users as |user| ~}}
+echo '{{ strJoin user.commands "\n" }}' | crontab -u {{user.name}} -
 {{/each}}

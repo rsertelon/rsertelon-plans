@@ -1,9 +1,12 @@
-# [[crontabs]]
-#   times = "* * * * *"
-#   user = "root"
-#   command = """echo "hello cron" """
+# [[users]]
+#     name = "hab"
+#     commands = [
+#         "* * * * * touch /tmp/totu",
+#         "* * * * * touch /tmp/tita"
+#     ]
 
-# [[crontabs]]
-#   times = "* * * * *"
-#   user = "hab"
-#   command = "touch /tmp/totu"
+# [[users]]
+#     name = "root"
+#     commands = [
+#         "* * * * * touch /tmp/rotu"
+#     ]
