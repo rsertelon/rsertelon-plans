@@ -31,3 +31,9 @@ do_build() {
 
   make
 }
+
+do_install() {
+  do_default_install
+
+  mkdir -p ${pkg_prefix}/etc/cron.d
+}
