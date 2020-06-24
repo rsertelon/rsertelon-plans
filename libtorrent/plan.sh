@@ -1,12 +1,12 @@
 pkg_name=libtorrent
 pkg_origin=rsertelon
-pkg_version="1.2.5"
+pkg_version="1.2.7"
 pkg_upstream_url="http://libtorrent.org/"
 pkg_description="Feature complete C++ BitTorrent implementation"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('BSD-2-Clause')
-pkg_source="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${pkg_version//./_}/libtorrent-rasterbar-${pkg_version}.tar.gz"
-pkg_shasum="84b79f85ffa4e4a5f434bf5c53b0d5a63dfea17b7623143caaa695faf61b2d1b"
+pkg_source="https://github.com/arvidn/libtorrent/releases/download/libtorrent_${pkg_version//./_}/libtorrent-rasterbar-${pkg_version}.tar.gz"
+pkg_shasum="bc00069e65c0825cbe1eee5cdd26f94fcd9a621c4e7f791810b12fab64192f00"
 pkg_dirname="libtorrent-rasterbar-${pkg_version}"
 pkg_deps=(
     core/gcc-libs
