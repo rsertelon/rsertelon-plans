@@ -10,6 +10,7 @@ pkg_shasum="6642e62f23b1b23cfac235007ca6e21cb67460cca834689fad450724456eb10c"
 
 pkg_deps=(
   core/bzip2
+  core/gcc-libs
   core/glibc
   core/lz4
   core/mysql-client
