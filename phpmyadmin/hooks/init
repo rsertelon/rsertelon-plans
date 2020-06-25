@@ -9,6 +9,7 @@ chown -R hab:hab {{pkg.svc_var_path}}
 chown -R hab:hab {{pkg.svc_config_path}}
 
 # phpMyAdmin
+rm -r {{pkg.svc_data_path}}/*
 cp -r {{pkg.path}}/phpmyadmin/* {{pkg.svc_data_path}}/
 cp {{pkg.svc_config_path}}/phpmyadmin.config.inc.php {{pkg.svc_data_path}}/config.inc.php
 
