@@ -1,12 +1,12 @@
 pkg_name=postfix
 pkg_origin=core
-pkg_version="3.4.13"
+pkg_version="3.5.3"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_description="Wietse Venema's mail server that started life at IBM research as an alternative to the widely-used Sendmail program."
 pkg_upstream_url="http://www.postfix.org/"
 pkg_license=('IPL-1.0')
 pkg_source="http://postfix.mirrors.ovh.net/postfix-release/official/postfix-${pkg_version}.tar.gz"
-pkg_shasum="39778bc176ff89daf66157f49998d969116657c12b1b4bde1d731192dd5ae7e9"
+pkg_shasum="e381089cf2a03105042835776f23489c0a58600a6a6ebc8cb59f5cb1eb4d8d75"
 pkg_build_deps=(
   core/make
   core/gcc
