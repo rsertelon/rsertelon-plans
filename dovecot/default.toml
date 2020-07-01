@@ -84,3 +84,5 @@
   [bind.lmtp]
     addresses = ["127.0.0.1", "::1"]
     port = 24
+  [bind.managesieve]
+    addresses = ["127.0.0.1", "::1"]
