@@ -41,7 +41,14 @@ pkg_svc_group="root"
 do_download() {
   do_default_download
 
-  download_file "https://pigeonhole.dovecot.org/releases/2.3/${pigeonhole_filename}" $pigeonhole_filename 48c89cc9f3caa9c5f2454f9dcca74fe251a99749a38062bfab7e5017d329605e
+  download_file "https://pigeonhole.dovecot.org/releases/2.3/${pigeonhole_filename}" "$pigeonhole_filename" "48c89cc9f3caa9c5f2454f9dcca74fe251a99749a38062bfab7e5017d329605e"
+}
+
+do_verify() {
+  do_default_verify
+
+  verify_file "$pigeonhole_filename" "48c89cc9f3caa9c5f2454f9dcca74fe251a99749a38062bfab7e5017d329605e"
+  return $?
 }
 
 do_clean() {
@@ -53,7 +60,7 @@ do_clean() {
 do_unpack() {
   do_default_unpack
 
-  tar xf "$HAB_CACHE_SRC_PATH/${pigeonhole_filename}"
+  unpack_file ${pigeonhole_filename}
 }
 
 do_prepare() {
