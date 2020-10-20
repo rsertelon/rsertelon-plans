@@ -9,3 +9,14 @@
     # output of htpasswd -nb admin admin
     "admin:$apr1$Hf868va7$O.K0bMvda/3.pyjd1ZL3Z/"
   ]
+
+[mytinytodo]
+  url  = "http://todo.example.tld/"
+  title = "MyTinyTodo"
+
+  [mytinytodo.mysql]
+    host = "localhost"
+    database = "mytinytodo"
+    user = "user"
+    password = "password"
+    prefix = "mtt_"
