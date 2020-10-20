@@ -1,11 +1,11 @@
 pkg_name=resilio-sync
 pkg_origin=rsertelon
-pkg_version=2.7.1
+pkg_version=2.7.2
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('Resilio Sync License')
 pkg_upstream_url="https://www.resilio.com/platforms/desktop/"
 pkg_source="https://download-cdn.resilio.com/stable/linux-x64/resilio-sync_x64.tar.gz"
-pkg_shasum="756f3532371a8c3c5378e7dd58600b6988e003476b50cd9179f1b2f31abfb2bd"
+pkg_shasum="0e9e92eb0deeb9314e9676275e91fdce6d6296b352637e7dc59eecb03f2d593d"
 pkg_deps=(
   core/glibc
 )
