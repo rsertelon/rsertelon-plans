@@ -1,12 +1,12 @@
 pkg_name=boinc-client
 pkg_origin=rsertelon
-pkg_version=7.16.7
+pkg_version=7.16.16
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('LGPL-3.0')
 pkg_upstream_url="https://boinc.berkeley.edu/"
 pkg_source="https://github.com/BOINC/boinc/archive/client_release/${pkg_version%.*}/${pkg_version}.tar.gz"
 pkg_dirname="boinc-client_release-${pkg_version%.*}-${pkg_version}"
-pkg_shasum="38130d532031e75701eee910da64b9eb837e5bfeff9979dbb200c37146be3fed"
+pkg_shasum="0d5656a9f8ed1048936a5764270848b892d63f27bdb863d0ace447f1eaae6002"
 pkg_deps=(
   core/curl
   core/gcc-libs
