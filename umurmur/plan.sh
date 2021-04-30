@@ -1,12 +1,12 @@
 pkg_name=umurmur
 pkg_origin=rsertelon
-pkg_version="0.2.19"
+pkg_version="0.2.20"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("BSD-3-Clause")
 pkg_upstream_url="https://umurmur.net/"
 pkg_description="A minimalistic Mumble server primarily targeted to run on embedded computers"
 pkg_source="https://github.com/umurmur/umurmur/archive/${pkg_version}.tar.gz"
-pkg_shasum="338053160bc48e48850061cdfc19cf1b2bb66e56877c04cd6de7831b468646b6"
+pkg_shasum="b7b2978c3197aef0a6531f1cf0ee1aebb32a55ad8bda43064ce3a944edbcac83"
 
 pkg_build_deps=(
   core/cmake
