@@ -29,6 +29,7 @@ do_prepare() {
 }
 
 do_build() {
+  pip install --upgrade setuptools # fixes missing setuptools_rust
   python setup.py build
 }
 
