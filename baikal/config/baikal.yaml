@@ -1,0 +1,20 @@
+
+system:
+    configured_version: '{{pkg.version}}'
+    timezone: '{{cfg.baikal.timezone}}'
+    card_enabled: true
+    cal_enabled: true
+    invite_from: '{{cfg.baikal.invite_from}}'
+    dav_auth_type: '{{cfg.baikal.auth.type}}'
+    admin_passwordhash: BAIKAL_ADMIN_PASSWORDHASH_VALUE
+    failed_access_message: 'user %u authentication failure for Baikal'
+    auth_realm: {{cfg.baikal.auth.realm}}
+    base_uri: ''
+database:
+    encryption_key: BAIKAL_ENCRYPTION_KEY_VALUE
+    sqlite_file: "absolute/path/to/Specific/db/db.sqlite"
+    mysql: true
+    mysql_host: '{{cfg.baikal.database.host}}'
+    mysql_dbname: '{{cfg.baikal.database.name}}'
+    mysql_username: '{{cfg.baikal.database.username}}'
+    mysql_password: '{{cfg.baikal.database.password}}'
