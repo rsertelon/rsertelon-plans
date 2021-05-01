@@ -1,16 +1,17 @@
 pkg_name=dovecot
 pkg_origin=rsertelon
-pkg_version=2.3.11.3
+pkg_version=2.3.14
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_description="The Secure IMAP server"
 pkg_upstream_url="https://dovecot.org"
 pkg_license=("LGPL-2.1" "MIT")
 pkg_source="https://dovecot.org/releases/2.3/dovecot-${pkg_version}.tar.gz"
-pkg_shasum="d3d9ea9010277f57eb5b9f4166a5d2ba539b172bd6d5a2b2529a6db524baafdc"
+pkg_shasum="c8b3d7f3af1e558a3ff0f970309d4013a4d3ce136f8c02a53a3b05f345b9a34a"
 
-pigeonhole_version=0.5.11
+pigeonhole_version=0.5.14
 pigeonhole_dirname="dovecot-2.3-pigeonhole-${pigeonhole_version}"
 pigeonhole_filename="${pigeonhole_dirname}.tar.gz"
+pigeonhole_file_shasum="68ca0f78a3caa6b090a469f45c395c44cf16da8fcb3345755b1ca436c9ffb2d2"
 
 pkg_deps=(
   core/bzip2
@@ -41,13 +42,13 @@ pkg_svc_group="root"
 do_download() {
   do_default_download
 
-  download_file "https://pigeonhole.dovecot.org/releases/2.3/${pigeonhole_filename}" "$pigeonhole_filename" "48c89cc9f3caa9c5f2454f9dcca74fe251a99749a38062bfab7e5017d329605e"
+  download_file "https://pigeonhole.dovecot.org/releases/2.3/${pigeonhole_filename}" "$pigeonhole_filename" "$pigeonhole_file_shasum"
 }
 
 do_verify() {
   do_default_verify
 
-  verify_file "$pigeonhole_filename" "0b972a441f680545ddfacd2f41fb2a705fb03249d46ed5ce7e01fe68b6cfb5f0"
+  verify_file "$pigeonhole_filename" "$pigeonhole_file_shasum"
   return $?
 }
 
