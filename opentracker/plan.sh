@@ -1,12 +1,20 @@
 pkg_name=opentracker
 pkg_origin=rsertelon
-pkg_version="master"
+pkg_version="1.0.0"
 pkg_upstream_url="https://erdgeist.org/arts/software/opentracker/"
 pkg_description="An Open Source bittorrent tracker"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('Beerware')
-pkg_deps=(rsertelon/libowfat rsertelon/zlib-static core/glibc)
-pkg_build_deps=(core/make core/gcc core/git)
+pkg_deps=(
+  core/glibc
+  rsertelon/libowfat
+  rsertelon/zlib-static
+)
+pkg_build_deps=(
+  core/gcc
+  core/git
+  core/make
+)
 pkg_bin_dirs=(bin)
 
 do_download() {
