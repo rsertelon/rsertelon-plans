@@ -27,6 +27,7 @@
   zip_download = false
   podcast = false
   show_footer_statistics = true
+  wanted = false
   
   [ampache.lastfm]
   api_key = ""
