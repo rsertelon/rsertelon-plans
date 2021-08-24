@@ -1,6 +1,6 @@
 pkg_name=python
 pkg_distname=Python
-pkg_version=3.7.0
+pkg_version=3.7.11
 pkg_origin=rsertelon
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('Python-2.0')
@@ -9,7 +9,7 @@ pkg_description="Python is a programming language that lets you work quickly \
 pkg_upstream_url="https://www.python.org"
 pkg_dirname="${pkg_distname}-${pkg_version}"
 pkg_source="https://www.python.org/ftp/python/${pkg_version}/${pkg_dirname}.tgz"
-pkg_shasum="85bb9feb6863e04fb1700b018d9d42d1caac178559ffa453d7e6a436e259fd0d"
+pkg_shasum="b4fba32182e16485d0a6022ba83c9251e6a1c14676ec243a9a07d3722cd4661a"
 
 pkg_bin_dirs=(bin)
 pkg_lib_dirs=(lib)
