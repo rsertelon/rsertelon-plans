@@ -1,6 +1,6 @@
 pkg_name=mkdocs
 pkg_origin=rsertelon
-pkg_version=1.1.2
+pkg_version=1.2.2
 pkg_upstream_url="http://www.mkdocs.org/"
 pkg_description="Project documentation with Markdown. "
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
