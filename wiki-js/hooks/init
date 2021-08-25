@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+# wiki-js
+rm -r {{pkg.svc_data_path}}/*
+cp -r {{pkg.path}}/wiki-js/* {{pkg.svc_data_path}}/
+cp {{pkg.svc_config_path}}/config.yml {{pkg.svc_data_path}}/

@@ -82,5 +82,8 @@ plan_path = "thttpd"
 [umurmur]
 plan_path = "umurmur"
 
+[wiki-js]
+plan_path = "wiki-js"
+
 [zlib-static]
 plan_path = "zlib-static"

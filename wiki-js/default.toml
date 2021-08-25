@@ -1,0 +1,10 @@
+[bind]
+  address = "127.0.0.1"
+  port = 3000
+
+[database]
+  hostname = "localhost"
+  port = 3306
+  name = "wikijs"
+  username = "username"
+  password = "password"
