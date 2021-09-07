@@ -18,7 +18,7 @@ pkg_deps=(
   core/coreutils
   core/glibc
   core/libnsl
-  core/mysql-client
+  rsertelon/mysql-client
   core/openssl
   core/zlib
 )
@@ -30,12 +30,12 @@ pkg_svc_group="root"
 
 do_build() {
   local mycc="-DNO_DB -DNO_NIS -DNO_PCRE"
-  mycc="${mycc} -DHAS_MYSQL -I$(pkg_path_for "core/mysql-client")/include"
+  mycc="${mycc} -DHAS_MYSQL -I$(pkg_path_for "rsertelon/mysql-client")/include"
   mycc="${mycc} -DUSE_SASL_AUTH"
   mycc="${mycc} -DUSE_TLS -I$(pkg_path_for "core/openssl")/include"
 
   local myauxlibs="-L$(pkg_path_for "core/openssl")/lib -lssl -lcrypto -L$(pkg_path_for "core/glibc")/lib -lresolv"
-  local myauxlibs_mysql="-L$(pkg_path_for "core/mysql-client")/lib -lmysqlclient -L$(pkg_path_for "core/zlib")/lib -lz -lm"
+  local myauxlibs_mysql="-L$(pkg_path_for "rsertelon/mysql-client")/lib -lmysqlclient -L$(pkg_path_for "core/zlib")/lib -lz -lm"
 
   make makefiles \
     shared=yes \
