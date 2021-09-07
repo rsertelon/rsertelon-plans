@@ -46,6 +46,9 @@ plan_path = "libtorrent"
 [mkdocs]
 plan_path = "mkdocs"
 
+[mysql-client]
+plan_path = "mysql-client"
+
 [mytinytodo]
 plan_path = "mytinytodo"
 
