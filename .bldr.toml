@@ -13,6 +13,9 @@ plan_path = "boinc-client"
 [boost]
 plan_path = "boost"
 
+[boost172]
+plan_path = "boost172"
+
 [boost-build]
 plan_path = "boost-build"
 
