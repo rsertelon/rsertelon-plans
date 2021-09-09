@@ -11,9 +11,10 @@
   ]
 
 [postfixadmin]
-  # to fill in this value, generate a salt and compute: "salt + ':' sha1( salt + ':' + password )"
+  # to fill in this value, use the following command
+  # php -r "echo password_hash('some password here', PASSWORD_DEFAULT);"
   # defaults to "p4ssw0rd"
-  setup_password = "4077dd588ed82f733284be92f8c286b5:521760ec06890102f0112c680c595c1a463c0541"
+  setup_password = "$2y$10$iU5jY0NyL/ywdQ0khsZkD.j6e7gqW0jTF1ZWT78hjLbw51dlX.oYa"
   default_language = "en"
   homepage_url = "https://postfixadmin.domain.tld"
 
