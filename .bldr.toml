@@ -22,6 +22,9 @@ plan_path = "boost-build"
 [certbot]
 plan_path = "certbot"
 
+[composer]
+plan_path = "composer"
+
 [cronie]
 plan_path = "cronie"
 
