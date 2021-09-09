@@ -10,7 +10,7 @@ pkg_svc_user="hab"
 pkg_svc_group="hab"
 
 pkg_deps=(
-  core/php
+  rsertelon/php
   core/readline
 )
 
