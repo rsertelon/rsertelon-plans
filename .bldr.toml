@@ -58,6 +58,9 @@ plan_path = "opendkim"
 [opentracker]
 plan_path = "opentracker"
 
+[php]
+plan_path = "php"
+
 [php-fpm]
 plan_path = "php-fpm"
 
