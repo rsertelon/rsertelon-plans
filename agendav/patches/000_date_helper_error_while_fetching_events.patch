@@ -1,0 +1,12 @@
+--- agendav-develop-old/web/src/DateHelper.php	2021-04-28 13:23:44.000000000 +0200
++++ agendav-develop/web/src/DateHelper.php	2021-09-09 12:05:56.907021824 +0200
+@@ -84,7 +84,8 @@
+     public static function fullcalendarToDateTime($input, \DateTimeZone $timezone)
+     {
+         $format = 'Y-m-d\THis';
+-        $input .= 'T000000';
++        //was $input .= 'T000000';
++        $input = str_replace('T00:00:00','',$input).'T000000';
+ 
+        $result = self::createDateTime($format, $input, $timezone);
+ 
