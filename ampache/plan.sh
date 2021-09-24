@@ -33,5 +33,5 @@ do_install() {
   cp -r * "${pkg_prefix}/ampache/"
   cd $pkg_prefix/ampache
 
-  composer install --prefer-source --no-interaction
+  composer install --no-interaction --no-dev -o
 }
