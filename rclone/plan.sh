@@ -1,6 +1,6 @@
 pkg_name=rclone
 pkg_origin=rsertelon
-pkg_version=1.56.1
+pkg_version=1.57.0
 pkg_maintainer='Romain Sertelon <romain@sertelon.fr>'
 pkg_license='MIT'
 pkg_upstream_url='https://rclone.org/'
@@ -8,7 +8,7 @@ pkg_description='Rclone syncs your files to cloud storage'
 pkg_dirname="rclone-v${pkg_version}-linux-amd64"
 pkg_filename="${pkg_dirname}.zip"
 pkg_source="https://downloads.rclone.org/v${pkg_version}/${pkg_filename}"
-pkg_shasum="4b6f076b8a518a49444b774e06d814026f85678e5a9139b88e533ded60d03672"
+pkg_shasum="49191e1156cf0c41d9e6af35bd31cf2a2884107483823e17671323717905e771"
 pkg_bin_dirs=(bin)
 
 do_build() {
