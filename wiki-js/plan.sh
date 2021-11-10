@@ -1,12 +1,12 @@
 pkg_name=wiki-js
 pkg_origin=rsertelon
-pkg_version="2.5.214"
+pkg_version="2.5.219"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("AGPL-3.0")
 pkg_upstream_url="https://js.wiki/"
 pkg_description="The most powerful and extensible open source Wiki software."
 pkg_source="https://github.com/Requarks/wiki/releases/download/${pkg_version}/wiki-js.tar.gz"
-pkg_shasum="117cac1e1109e352cc2d1b9e12816bf9213d49d2445cc64b849412bd9813a138"
+pkg_shasum="c73c4ebf5ec1fbdc1e82d3571abf520f82945a531baef3ed661bdf9a866104d7"
 
 pkg_svc_user=root
 pkg_svc_group=$pkg_svc_user
