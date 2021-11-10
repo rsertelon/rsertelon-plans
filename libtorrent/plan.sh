@@ -15,7 +15,7 @@ pkg_deps=(
     core/openssl
     core/zlib
     rsertelon/boost
-    rsertelon/python
+    core/python
 )
 pkg_build_deps=(
     core/diffutils
