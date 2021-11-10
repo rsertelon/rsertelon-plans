@@ -13,7 +13,7 @@ pkg_deps=(
   core/openssl
   core/zlib
   rsertelon/libtorrent
-  rsertelon/python # Has lzma support
+  core/python
 )
 pkg_build_deps=(
   core/gcc
