@@ -1,6 +1,6 @@
 pkg_name=wiki-js
 pkg_origin=rsertelon
-pkg_version="2.5.219"
+pkg_version="2.5.275"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("AGPL-3.0")
 pkg_upstream_url="https://js.wiki/"
