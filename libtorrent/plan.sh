@@ -36,7 +36,7 @@ do_prepare() {
 }
 
 do_setup_environment() {
-    push_runtime_env PYTHONPATH "${pkg_prefix}/lib/python3.7/site-packages"
+    push_runtime_env PYTHONPATH "${pkg_prefix}/lib/python3.9/site-packages"
 }
 
 do_build() {
