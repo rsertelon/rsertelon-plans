@@ -6,7 +6,7 @@
 ; This value is used to detect if this config file is up to date
 ; this is compared against a constant called CONFIG_VERSION
 ; that is located in src/Config/Init/InitializationHandlerConfig.php
-config_version = 56
+config_version = 59
 
 ;#########################################################
 ; Auto Update                                            #
@@ -100,8 +100,8 @@ database_password = {{cfg.ampache.database.password}}
 ; Don't change this unless you understand how to BACKUP and RESTORE a database!
 ;
 ; There are a ton of options but you'll probably want one of these.
-; "utf8_unicode_ci"        = Regular unicode (3 bytes per character)
-; "utf8mb4_unicode_ci"     = 4 bytes per character
+; "utf8_unicode_ci" = Regular unicode (3 bytes per character)
+; "utf8mb4_unicode_ci" = 4 bytes per character
 ; "utf8mb4_unicode_520_ci" = Supports more characters and is based on UCA 5.2.0 weight keys
 ;   http://www.unicode.org/Public/UCA/5.2.0/allkeys.txt
 ; DEFAULT: "utf8mb4_unicode_ci"
@@ -274,11 +274,6 @@ additional_genre_delimiters = "[/]{2}|[/\\\\|,;]"
 ; DEFAULT: "false"
 ;write_tags = "true"
 
-; Overwrite tags
-; This switch allows removal of id3v1 tags from the files.
-; DEFAULT: "false"
-;overwrite_tags = "true"
-
 ;#########################################################
 ; Catalog                                                #
 ;#########################################################
@@ -338,7 +333,7 @@ catalog_prefix_pattern = "The|An|A|Die|Das|Ein|Eine|Les|Le|La"
 ; For large catalogs the verify process can be terribly long so this will help
 ; speed things up by checking modification date using filemtime() before loading
 ; DEFAULT: "true"
-catalog_verify_by_time = "false"
+catalog_verify_by_time = "true"
 
 ;#########################################################
 ; Program Settings                                       #
@@ -420,7 +415,7 @@ allow_zip_download = "{{cfg.ampache.features.zip_download}}"
 ; Ampache which directory to save the temporary file to. Do not put a
 ; trailing slash or this will not work.
 ; DEFAULT: "false"
-;tmp_dir_path = "true"
+;tmp_dir_path = "/tmp"
 
 ; This setting throttles a persons downloading to the specified
 ; bytes per second. This is not a 100% guaranteed function, and
@@ -440,7 +435,7 @@ allow_zip_download = "{{cfg.ampache.features.zip_download}}"
 ;no_symlinks = "true"
 
 ; Use auth?
-; If this is set to "Yes" Ampache will require a valid
+; If this is set to "true" Ampache will require a valid
 ; Username and password. If this is set to false then Ampache
 ; will not ask you for a username and password. false is only
 ; recommended for internal only instances
@@ -460,13 +455,14 @@ default_auth_level = "guest"
 ; This allows custom times to decide when a track is skipped
 ; Allows an integer to denote seconds, or a float to denote percentage
 ; POSSIBLE VALUES:
-; 20  = 20 seconds.
+; 20 = 20 seconds.
 ; 0.3 = 30%
 ; DEFAULT: 20
 ;skip_timer = 20
 
 ; 5 Star Ratings
 ; This allows ratings for almost any object in Ampache
+: It also allows users to flag objects as a favorite
 ; POSSIBLE VALUES: false true
 ; DEFAULT: "true"
 ratings = "true"
@@ -488,12 +484,6 @@ ratings = "true"
 ; assigned to a specific user set their user ID here.
 ; DEFAULT: -1
 ;rating_file_tag_user = 1
-
-; User flags/favorites
-; This allows user flags for almost any object in Ampache as favorite
-; POSSIBLE VALUES: false true
-; DEFAULT: "true"
-userflags = "true"
 
 ; Direct play
 ; This allows user to play directly a song or album
@@ -614,8 +604,8 @@ sociable = "true"
 ; Set this to true if you want Ampache to generate
 ; cover art for playlists automatically based on
 ; the content.
-; DEFAULT: "false"
-;playlist_art = "true"
+; DEFAULT: "true"
+playlist_art = "true"
 
 ; Statistical Graphs * Requires PHP-GD *
 ; Set this to true if you want Ampache to generate statistical graphs on usages / users.
@@ -681,6 +671,11 @@ show_similar = "{{cfg.ampache.lastfm.show_similar}}"
 ; DEFAULT: "false"
 ;hide_search = "true"
 
+; Allow or disallow upload scripts on the server
+; Enable this if you trust your users
+; DEFAULT: "false"
+;allow_upload_scripts = "true"
+
 ;#########################################################
 ;      API keys                                          #
 ;#########################################################
@@ -693,15 +688,18 @@ lastfm_api_key = "{{cfg.ampache.lastfm.api_key}}"
 ; Last.FM API secret
 ; Set this to your Last.FM api secret to actually use Last.FM for
 ; scrobbling.
+; DEFAULT: none
 lastfm_api_secret = "{{cfg.ampache.lastfm.api_secret}}"
 
 ; Spotify client id
 ; Set this to your Spotify client id to actually use Spotify for
 ; accessing their catalog API. (https://developer.spotify.com/dashboard/)
+; DEFAULT: none
 ;spotify_client_id = ""
 
 ; Spotify client secret
 ; Both id and secret are required to access the spotify catalog.
+; DEFAULT: none
 ;spotify_client_secret = ""
 
 ; Wanted
@@ -746,7 +744,7 @@ live_stream = "true"
 ; Podcasts
 ; Set this to true to enable podcasts and the
 ; possibility for admins to subscribe to new podcasts.
-; DEFAULT: "false"
+; DEFAULT: "true"
 podcast = "{{cfg.ampache.features.podcast}}"
 
 ; Web Socket address
@@ -794,7 +792,6 @@ refresh_limit = "60"
 ; This defines whether statistics (Queries, Cache Hits, Load Time)
 ; are shown in the page footer.
 ; DEFAULT: "true"
-; Possible values: "true", "false"
 show_footer_statistics = "{{cfg.ampache.features.show_footer_statistics}}"
 
 ; RSS Feeds
@@ -808,13 +805,6 @@ show_footer_statistics = "{{cfg.ampache.features.show_footer_statistics}}"
 ; dangerous. Do this only if you trust every theme in your themes/ directory.
 ; DEFAULT: "false"
 ;allow_php_themes = "true"
-
-; Subsonic clients all seem to ignore the download method and always stream.
-; This setting will stop recording stats from Subsonic stream actions.
-; (This means you can sync playlists without overloading your server)
-; Make sure you enable scrobbling in your Subsonic client to keep recording stats!
-; DEFAULT: "true"
-;subsonic_stream_scrobble = "true"
 
 ;#########################################################
 ; Debugging                                              #
@@ -890,6 +880,7 @@ site_charset = UTF-8
 ;   - %a: the artist name
 ;   - %A: the album name
 ;   - %t: the song title
+; DEFAULT: none
 ;custom_play_action_run_0 = ""
 
 ; Example for Karaoke playing
@@ -1088,29 +1079,30 @@ registration_mandatory_fields = "fullname"
 ; transcode_TYPE = {allowed|required|false}
 ; DEFAULT: "false"
 ;;; Audio
-;transcode_m4a  = "allowed"
+;transcode_m4a = "allowed"
 ;transcode_flac = "required"
-;transcode_mpc  = "required"
-;transcode_ogg  = "required"
-;transcode_oga  = "required"
+;transcode_mpc = "required"
+;transcode_ogg = "required"
+;transcode_oga = "required"
 ;transcode_opus = "required"
-;transcode_wav  = "required"
-;transcode_wma  = "required"
-;transcode_aif  = "required"
+;transcode_wav = "required"
+;transcode_wma = "required"
+;transcode_aif = "required"
 ;transcode_aiff = "required"
-;transcode_ape  = "required"
-;transcode_shn  = "required"
-transcode_mp3  = "allowed"
+;transcode_ape = "required"
+;transcode_shn = "required"
+transcode_mp3 = "allowed"
 ;;; Video
-;transcode_avi  = "allowed"
-;transcode_mkv  = "allowed"
-;transcode_mpg  = "allowed"
+;transcode_avi = "allowed"
+;transcode_flv = "allowed"
+;transcode_mkv = "allowed"
+;transcode_mpg = "allowed"
 ;transcode_mpeg = "allowed"
-;transcode_m4v  = "allowed"
-;transcode_mp4  = "allowed"
-;transcode_mov  = "allowed"
-;transcode_wmv  = "allowed"
-;transcode_ogv  = "allowed"
+;transcode_m4v = "allowed"
+;transcode_mp4 = "allowed"
+;transcode_mov = "allowed"
+;transcode_wmv = "allowed"
+;transcode_ogv = "allowed"
 ;transcode_divx = "allowed"
 ;transcode_m2ts = "allowed"
 ;transcode_webm = "allowed"
@@ -1208,7 +1200,7 @@ encode_ss_duration = "-t %DURATION%"
 ; You can set it for all streams or a specific player
 ; POSSIBLE VALUES: true webplayer api
 ; DEFAULT: "webplayer"
-;send_full_stream = "webplayer"
+send_full_stream = "webplayer"
 
 ;#########################################################
 ; Transcode Caching                                      #
@@ -1232,24 +1224,24 @@ encode_ss_duration = "-t %DURATION%"
 ; web server or to make sure that clients get files quickly.
 ; Execute "php bin/cli run:cacheProcess" to process these files.
 ; DEFAULT: "false"
-;cache_m4a  = "true"
+;cache_m4a = "true"
 ;cache_flac = "true"
-;cache_mpc  = "true"
-;cache_ogg  = "true"
-;cache_oga  = "true"
+;cache_mpc = "true"
+;cache_ogg = "true"
+;cache_oga = "true"
 ;cache_opus = "true"
-;cache_wav  = "true"
-;cache_wma  = "true"
-;cache_aif  = "true"
+;cache_wav = "true"
+;cache_wma = "true"
+;cache_aif = "true"
 ;cache_aiff = "true"
-;cache_ape  = "true"
-;cache_shn  = "true"
-;cache_mp3  = "true"
+;cache_ape = "true"
+;cache_shn = "true"
+;cache_mp3 = "true"
 
 ; REMOTE CATALOGS ONLY
 ; Enabling cache_remote on remote catalogs will cache every file on the remote server
 ; DEFAULT: "false"
-;cache_remote  = "true"
+;cache_remote = "true"
 
 ;#########################################################
 ; Proxy Settings (optional)                              #
@@ -1333,10 +1325,12 @@ mail_auth = "{{cfg.ampache.mail.smtp.auth}}"
 
 ; SMTP username
 ; your mail auth username.
+; DEFAULT: none
 mail_auth_user = "{{cfg.ampache.mail.smtp.user}}"
 
 ; SMTP password
 ; your mail auth password.
+; DEFAULT: none
 mail_auth_pass = "{{cfg.ampache.mail.smtp.password}}"
 
 ;#########################################################
