@@ -16,7 +16,7 @@ pkg_deps=(
   core/inetutils
   core/libedit
   core/ncurses
-  core/openssl
+  core/openssl11
   core/pcre
   core/perl
   core/procps-ng
@@ -45,9 +45,9 @@ do_build() {
           -DCURSES_LIBRARY="$(pkg_path_for core/ncurses)/lib/libtinfo.so" \
           -DCURSES_INCLUDE_PATH="$(pkg_path_for core/ncurses)/include" \
           -DWITH_SSL=yes \
-          -DOPENSSL_INCLUDE_DIR="$(pkg_path_for core/openssl)/include" \
-          -DOPENSSL_LIBRARY="$(pkg_path_for core/openssl)/lib/libssl.so" \
-          -DCRYPTO_LIBRARY="$(pkg_path_for core/openssl)/lib/libcrypto.so" \
+          -DOPENSSL_INCLUDE_DIR="$(pkg_path_for core/openssl11)/include" \
+          -DOPENSSL_LIBRARY="$(pkg_path_for core/openssl11)/lib/libssl.so" \
+          -DCRYPTO_LIBRARY="$(pkg_path_for core/openssl11)/lib/libcrypto.so" \
           -DWITHOUT_SERVER:BOOL=ON \
           -DCMAKE_INSTALL_PREFIX="$pkg_prefix"
 
