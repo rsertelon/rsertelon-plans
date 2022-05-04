@@ -1,12 +1,12 @@
 pkg_name=postfix
 pkg_origin=core
-pkg_version="3.5.12"
+pkg_version="3.7.2"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_description="Wietse Venema's mail server that started life at IBM research as an alternative to the widely-used Sendmail program."
 pkg_upstream_url="http://www.postfix.org/"
 pkg_license=('IPL-1.0')
 pkg_source="http://postfix.mirrors.ovh.net/postfix-release/official/postfix-${pkg_version}.tar.gz"
-pkg_shasum="4254c2ba499da7e1f7d4bb9c3de41419760d2dcde39b9101ab122c6226b636d7"
+pkg_shasum="3785f76c2924a02873c0be0f0cd124a9166fc1aaf77ea2a06bd4ad795a6ed416"
 pkg_build_deps=(
   core/make
   core/gcc
@@ -19,7 +19,7 @@ pkg_deps=(
   core/glibc
   core/libnsl
   rsertelon/mysql-client
-  core/openssl
+  core/openssl11
   core/zlib
 )
 pkg_bin_dirs=(bin sbin libexec)
@@ -32,9 +32,9 @@ do_build() {
   local mycc="-DNO_DB -DNO_NIS -DNO_PCRE"
   mycc="${mycc} -DHAS_MYSQL -I$(pkg_path_for "rsertelon/mysql-client")/include"
   mycc="${mycc} -DUSE_SASL_AUTH"
-  mycc="${mycc} -DUSE_TLS -I$(pkg_path_for "core/openssl")/include"
+  mycc="${mycc} -DUSE_TLS -I$(pkg_path_for "core/openssl11")/include"
 
-  local myauxlibs="-L$(pkg_path_for "core/openssl")/lib -lssl -lcrypto -L$(pkg_path_for "core/glibc")/lib -lresolv"
+  local myauxlibs="-L$(pkg_path_for "core/openssl11")/lib -lssl -lcrypto -L$(pkg_path_for "core/glibc")/lib -lresolv"
   local myauxlibs_mysql="-L$(pkg_path_for "rsertelon/mysql-client")/lib -lmysqlclient -L$(pkg_path_for "core/zlib")/lib -lz -lm"
 
   make makefiles \
