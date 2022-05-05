@@ -22,6 +22,7 @@ pkg_svc_group="root"
 do_build() {
   SPOOL_DIR="${pkg_svc_data_path}/crontabs" \
   ./configure --prefix="${pkg_prefix}" \
+    --runstatedir="${pkg_svc_var_path}" \
     --disable-syscrontab \
     --disable-anacron \
     --enable-pie \
