@@ -1,12 +1,12 @@
 pkg_name=ampache
 pkg_origin=rsertelon
-pkg_version="5.2.1"
+pkg_version="5.3.2"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("AGPL-3.0")
 pkg_upstream_url="http://ampache.org/"
 pkg_description="A web based audio/video streaming application and file manager allowing you to access your music & videos from anywhere, using almost any internet enabled device."
 pkg_source="https://github.com/ampache/ampache/archive/${pkg_version}.tar.gz"
-pkg_shasum="2ae11e34da6cc436bb03fbb44b460cd1f4758bdd8024231a2a21dac87e60d40d"
+pkg_shasum="393fb36a5efa10b4fb4e1581e28ae2158e73889430a17ffa5ebda9b771bb24b1"
 pkg_filename="${pkg_version}.tar.gz"
 
 pkg_svc_user=root
