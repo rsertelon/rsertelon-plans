@@ -1,6 +1,6 @@
 pkg_name=php-fpm
 pkg_origin=rsertelon
-pkg_version="0.2.0"
+pkg_version="0.2.1"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('Apache-2.0')
 pkg_source=""
@@ -10,7 +10,7 @@ pkg_svc_user="hab"
 pkg_svc_group="hab"
 
 pkg_deps=(
-  rsertelon/php
+  core/php
   core/readline
 )
 
