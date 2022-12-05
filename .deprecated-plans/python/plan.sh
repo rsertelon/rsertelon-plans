@@ -1,3 +1,7 @@
+##
+# /!\ DEPRECATED PACKAGE /!\ Use core/composer instead.
+##
+
 pkg_name=python
 pkg_distname=Python
 pkg_version=3.7.11

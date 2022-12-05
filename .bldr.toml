@@ -13,17 +13,14 @@ plan_path = "boinc-client"
 [boost]
 plan_path = "boost"
 
-[boost172]
-plan_path = "boost172"
-
 [boost-build]
 plan_path = "boost-build"
 
+[boost172]
+plan_path = "boost172"
+
 [certbot]
 plan_path = "certbot"
-
-[composer]
-plan_path = "composer"
 
 [cronie]
 plan_path = "cronie"
@@ -37,11 +34,11 @@ plan_path = "dovecot"
 [h5ai]
 plan_path = "h5ai"
 
-[libowfat]
-plan_path = "libowfat"
-
 [libmilter]
 plan_path = "libmilter"
+
+[libowfat]
+plan_path = "libowfat"
 
 [libtorrent]
 plan_path = "libtorrent"
@@ -60,9 +57,6 @@ plan_path = "opendkim"
 
 [opentracker]
 plan_path = "opentracker"
-
-[php]
-plan_path = "php"
 
 [php-fpm]
 plan_path = "php-fpm"

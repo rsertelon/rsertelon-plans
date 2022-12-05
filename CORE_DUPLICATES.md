@@ -4,21 +4,9 @@ This file lists all packages that exist in core but where duplicated here becaus
 
 ## Core packages that could be changed (and remove the need for duplication here)
 
-### core/python
-
-* missing LZMA support ([#12](https://github.com/rsertelon/rsertelon-plans/issues/12))
-
-### core/php
-
-* missing gettext extension ([#59](https://github.com/rsertelon/rsertelon-plans/issues/59))
-
-### core/composer
-
-* must use rsertelon/php
-
 ### core/boost
 
-* must use rsertelon/python
+* must use core/python
 
 ### core/mysql-client
 

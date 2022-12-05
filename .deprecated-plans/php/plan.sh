@@ -1,3 +1,7 @@
+##
+# /!\ DEPRECATED PACKAGE /!\ Use core/composer instead.
+##
+
 pkg_name=php
 pkg_origin=rsertelon
 pkg_version=7.4.23

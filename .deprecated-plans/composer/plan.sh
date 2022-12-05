@@ -1,3 +1,7 @@
+##
+# /!\ DEPRECATED PACKAGE /!\ Use core/composer instead.
+##
+
 pkg_name=composer
 pkg_origin=rsertelon
 pkg_version=1.10.22
