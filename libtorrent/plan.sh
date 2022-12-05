@@ -36,26 +36,26 @@ do_prepare() {
 }
 
 do_setup_environment() {
-    push_runtime_env PYTHONPATH "${pkg_prefix}/lib/python3.9/site-packages"
+  push_runtime_env PYTHONPATH "${pkg_prefix}/lib/python3.10/site-packages"
 }
 
 do_build() {
-    ./configure --prefix=$pkg_prefix \
-        --with-boost-libdir=$(pkg_path_for rsertelon/boost)/lib \
-        --with-openssl=$(pkg_path_for core/openssl) \
-        --enable-python-binding \
-        --with-libiconv \
-        --with-libiconv-prefix=$(pkg_path_for core/libiconv)
-    make -j"$(nproc)"
+  ./configure --prefix=$pkg_prefix \
+    --with-boost-libdir=$(pkg_path_for rsertelon/boost)/lib \
+    --with-openssl=$(pkg_path_for core/openssl) \
+    --enable-python-binding \
+    --with-libiconv \
+    --with-libiconv-prefix=$(pkg_path_for core/libiconv)
+  make -j"$(nproc)"
 }
 
 do_install() {
-    make install
+  make install
 }
 
 do_check() {
-    # Not passing yet
-    make check
+  # Not passing yet
+  make check
 }
 
 do_end() {
