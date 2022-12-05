@@ -1,12 +1,12 @@
 pkg_name=rainloop
 pkg_origin=rsertelon
-pkg_version="1.16.0"
+pkg_version="1.17.0"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
-pkg_license=("RainLoop Software License")
+pkg_license=("MIT")
 pkg_upstream_url="http://www.rainloop.net/"
 pkg_description="Simple, modern & fast web-based email client"
-pkg_source="https://github.com/RainLoop/rainloop-webmail/releases/download/v${pkg_version}/rainloop-${pkg_version}.zip"
-pkg_shasum="6980b0a85aa124479a927e11d0c50319c4a9f8ce3b25b6c2adb61a30bf1a792b"
+pkg_source="https://github.com/RainLoop/rainloop-webmail/releases/download/v${pkg_version}/rainloop-legacy-${pkg_version}.zip"
+pkg_shasum="782dcabacadab5d7176f7701dd23319a040b2cfbf974fac6df068600cf69c50a"
 pkg_dirname="rainloop"
 
 pkg_build_deps=(
