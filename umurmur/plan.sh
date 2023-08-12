@@ -15,7 +15,7 @@ pkg_build_deps=(
 )
 pkg_deps=(
   core/cacerts
-  core/openssl
+  core/openssl11
   core/protobuf-c
   mozillareality/libconfig
 )
@@ -30,7 +30,7 @@ do_build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=$pkg_prefix \
     -DSSL=openssl \
-    -DOPENSSL_ROOT_DIR=$(pkg_path_for "core/openssl") \
+    -DOPENSSL_ROOT_DIR=$(pkg_path_for "core/openssl11") \
     -DLIBCONFIG_INCLUDE_DIR=$(pkg_path_for "mozillareality/libconfig")/include \
     -DLIBCONFIG_LIB_DIR=$(pkg_path_for "mozillareality/libconfig")/lib \
     -DPROTOBUFC_INCLUDE_DIR=$(pkg_path_for "core/protobuf-c")/include \
