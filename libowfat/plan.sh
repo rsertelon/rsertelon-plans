@@ -1,12 +1,12 @@
 pkg_name=libowfat
 pkg_origin=rsertelon
-pkg_version="0.32"
+pkg_version="0.33"
 pkg_upstream_url="http://www.fefe.de/libowfat/"
 pkg_description="Reimplement libdjb"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('GPL-2.0')
 pkg_source="http://www.fefe.de/libowfat/libowfat-${pkg_version}.tar.xz"
-pkg_shasum="f4b9b3d9922dc25bc93adedf9e9ff8ddbebaf623f14c8e7a5f2301bfef7998c1"
+pkg_shasum="311ec8b3f4b72bb442e323fb013a98f956fa745547f2bc9456287b20d027cd7d"
 pkg_build_deps=(
   core/make
   core/gcc
