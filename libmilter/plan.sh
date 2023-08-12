@@ -1,12 +1,12 @@
 pkg_name=libmilter
 pkg_origin=rsertelon
-pkg_version="8.17.1"
+pkg_version="8.17.2"
 pkg_upstream_url="https://www.proofpoint.com/us/products/open-source-email-solution"
 pkg_description="The Sendmail milter library"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('Sendmail')
 pkg_source="ftp://ftp.sendmail.org/pub/sendmail/sendmail.${pkg_version}.tar.gz"
-pkg_shasum="04bc76b6c886e6d111be7fd8daa32b8ce00128a288b6b52e067bc29f3854a6e6"
+pkg_shasum="90f5ae74c35a84808861933ba094201b901b70c6b2903684dcf39bdae8a5a1a2"
 pkg_dirname="sendmail-${pkg_version}"
 
 pkg_deps=(
