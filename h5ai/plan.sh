@@ -1,12 +1,12 @@
 pkg_name=h5ai$index
 pkg_origin=rsertelon
-pkg_version=0.29.2
+pkg_version=0.30.0
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('MIT')
 pkg_description="modern HTTP web server index"
 pkg_upstream_url="https://larsjung.de/h5ai/"
 pkg_source="https://release.larsjung.de/h5ai/h5ai-${pkg_version}.zip"
-pkg_shasum="612acd8cc724ab42c5266f7b9966a0212b561331d8770b5609891edb5cb69a8b"
+pkg_shasum="fe138305a61d72094beb8c507dab728020158e4b00dae695a60b9803babb3e30"
 pkg_dirname="_h5ai"
 
 pkg_svc_user=root
