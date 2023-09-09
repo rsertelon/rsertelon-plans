@@ -1,12 +1,12 @@
 pkg_name=ampache
 pkg_origin=rsertelon
-pkg_version="5.6.2"
+pkg_version="6.0.2"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("AGPL-3.0")
 pkg_upstream_url="http://ampache.org/"
 pkg_description="A web based audio/video streaming application and file manager allowing you to access your music & videos from anywhere, using almost any internet enabled device."
 pkg_source="https://github.com/ampache/ampache/archive/${pkg_version}.tar.gz"
-pkg_shasum="18a175b07d6b2ee22454a21accadec3cf5ebd6c7a84fb86aa3a982bc7e1992b2"
+pkg_shasum="b10a401fbfd91b6c6b7a64539837145bcc8dc11a3afcb59f18e660fc930fc1f2"
 pkg_filename="${pkg_version}.tar.gz"
 
 pkg_svc_user=root
@@ -33,5 +33,6 @@ do_install() {
   cp -r * "${pkg_prefix}/ampache/"
   cd $pkg_prefix/ampache
 
+  cp -f composer_old.json composer.json
   composer install --no-interaction --no-dev -o
 }
