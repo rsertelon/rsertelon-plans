@@ -1,0 +1,22 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[auth]
+  enabled = false
+  name = "Restricted Area"
+  credentials = [
+    # output of htpasswd -nb admin admin
+    "admin:$apr1$Hf868va7$O.K0bMvda/3.pyjd1ZL3Z/"
+  ]
+
+[dolibarr]
+  main_url_root = "http://127.0.0.1:8080"
+  main_data_root = "/hab/svc/dolibarr/data/documents"
+
+  [dolibarr.db]
+  host = "localhost"
+  port = 3306
+  name = "dolibarr"
+  user = "dolibarr"
+  password = "dolibarr"

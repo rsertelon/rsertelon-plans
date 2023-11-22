@@ -1,0 +1,22 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+
+chown -R hab:hab {{pkg.svc_var_path}}
+chown -R hab:hab {{pkg.svc_config_path}}
+
+config_file={{pkg.svc_data_path}}/htdocs/conf/conf.php
+
+# Dolibarr
+rm -r {{pkg.svc_data_path}}/*
+cp -r {{pkg.path}}/dolibarr/* {{pkg.svc_data_path}}/
+cp {{pkg.svc_config_path}}/dolibarr.conf.php $config_file
+
+# fill random instance number from install-time generated value
+random_instance_number=$(cat {{pkg.svc_path}}/random_instance_number)
+sed -i "s/DOLIBARR_RANDOM_INSTANCE_NUMBER_VALUE/${random_instance_number}/" "${config_file}"
+
+chown -R hab:hab {{pkg.svc_data_path}}

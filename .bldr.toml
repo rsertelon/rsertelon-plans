@@ -28,6 +28,9 @@ plan_path = "cronie"
 [deluge]
 plan_path = "deluge"
 
+[dolibarr]
+plan_path = "dolibarr"
+
 [dovecot]
 plan_path = "dovecot"
 
