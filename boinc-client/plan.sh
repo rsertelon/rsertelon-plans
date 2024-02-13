@@ -12,7 +12,7 @@ pkg_deps=(
   core/gcc-libs
   core/glibc
   core/nghttp2
-  core/openssl11
+  core/openssl
   core/zlib
 )
 pkg_build_deps=(
