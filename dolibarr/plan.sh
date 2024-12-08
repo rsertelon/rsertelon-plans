@@ -7,6 +7,8 @@ pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("GPL-3.0-or-later")
 pkg_source="https://github.com/Dolibarr/dolibarr/archive/refs/tags/${pkg_version}.tar.gz"
 pkg_shasum="555cd71c3cec365c80dc559415c92d1372dd29396d9d47c4150b2d9aa8f249f2"
+pkg_dirname=dolibarr-${pkg_version}
+pkg_filename="dolibarr-${pkg_version}.tar.gz"
 
 pkg_svc_user=root
 pkg_svc_group=$pkg_svc_user
