@@ -1,6 +1,6 @@
 
 system:
-    configured_version: '{{pkg.version}}'
+    configured_version: '0.7.0'
     timezone: '{{cfg.baikal.timezone}}'
     card_enabled: true
     cal_enabled: true
@@ -12,9 +12,13 @@ system:
     base_uri: ''
 database:
     encryption_key: BAIKAL_ENCRYPTION_KEY_VALUE
+    backend: 'mysql'
     sqlite_file: "absolute/path/to/Specific/db/db.sqlite"
-    mysql: true
     mysql_host: '{{cfg.baikal.database.host}}'
     mysql_dbname: '{{cfg.baikal.database.name}}'
     mysql_username: '{{cfg.baikal.database.username}}'
     mysql_password: '{{cfg.baikal.database.password}}'
+    pgsql_host: 'localhost'
+    pgsql_dbname: 'baikal'
+    pgsql_username: 'baikal'
+    pgsql_password: 'baikal'
