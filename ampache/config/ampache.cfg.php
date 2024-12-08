@@ -6,7 +6,7 @@
 ; This value is used to detect if this config file is up to date
 ; this is compared against a constant called CONFIG_VERSION
 ; that is located in src/Config/Init/InitializationHandlerConfig.php
-config_version = 69
+config_version = 71
 
 ; Defines the default timezone used by the date functions
 ; Uses the same strings as the default date.timezone (https://php.net/date.timezone)
@@ -70,7 +70,7 @@ http_port = {{cfg.ampache.port}}
 ; DEFAULT: none
 local_web_path = "http://{{cfg.bind.address}}:{{cfg.bind.port}}"
 
-; The Ampache base URL is determinied from web requests.
+; The Ampache base URL is determined from web requests.
 ; When using CLI actions you don't send a web request meaning
 ; it can't be determined. This setting allows you to set a
 ; fallback when the base url can't be determined. Do not put a
@@ -149,17 +149,19 @@ stream_length = 7200
 remember_length = {{cfg.ampache.session.remember_length}}
 
 ; Name of the Session/Cookie that will sent to the browser
-; default should be fine
-; DEFAULT: ampache
-session_name = ampache
+; If you are using session_cookiesecure add the prefix __Secure-
+; to restrict cookie access to HTTPS only (e.g. "__Secure-ampache")
+; (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#cookie-namecookie-value)
+; DEFAULT: "ampache"
+session_name = "ampache"
 
-; Lifetime of the Cookie, 0 == Forever (until browser close) , otherwise in terms of seconds
+; Lifetime of the Cookie, 0 == Forever (until browser close), otherwise in terms of seconds
 ; If you want cookies to last past a browser close set this to a value in seconds.
 ; DEFAULT: 0
 session_cookielife = 0
 
-; Is the cookie a "secure" cookie? This should only be set to 1 (true) if you are
-; running a secure site (HTTPS).
+; Create cookies with the "secure" flag.
+; Set to 1 (true) if you are running a secure site (HTTPS).
 ; DEFAULT: 0
 {{#if cfg.ampache.session.cookie_secure ~}}
 session_cookiesecure = 1
@@ -251,15 +253,6 @@ getid3_tag_order = "vorbiscomment,id3v2,id3v1,quicktime,matroska,ape,asf,avi,mpe
 ; May break valid tags.
 ; DEFAULT: "false"
 ;getid3_detect_id3v2_encoding = "true"
-
-; This determines if we write the changes to files (as id3 tags) when modifying metadata, or only keep them in Ampache (the default).
-; DEFAULT: "false"
-;write_id3 = "true"
-
-; This determines if we write the changes to files (as id3 tags) when modifying album art, or only keep them in Ampache (the default)
-; as id3 metadata when updated.
-; DEFAULT: "false"
-;write_id3_art = "true"
 
 ; This determines the order in which metadata sources are used (and in the
 ; case of plugins, checked)
@@ -368,9 +361,12 @@ catalog_prefix_pattern = "The|An|A|Die|Das|Ein|Eine|Les|Le|La"
 ;#########################################################
 
 ; Downsample Remote
-; If this is set to true and access control is on any users who are not
-; coming from a defined 'network' ACL will be automatically downsampled
-; regardless of their preferences. Requires access_control to be enabled
+; When enabled, any users who are not coming from a defined 'network' ACL
+; will be automatically downsampled. ('transcoding' will be set to 'required')
+; regardless of their preferences. This requires access_control to be enabled.
+; NOTE:
+;  * Local network users will disable all transcoding when enabled
+;  * If transcode is set to 'never' this setting will be ignored
 ; DEFAULT: "false"
 ;downsample_remote = "true"
 
@@ -420,13 +416,6 @@ allow_zip_download = "{{cfg.ampache.features.zip_download}}"
 ; DEFAULT: Ampache - Zip Batch Download
 ;file_zip_comment = "Ampache - Zip Batch Download"
 
-; Load the debug webplayer
-; This will load the *.js player instead of the *.min.js player
-; The unminified player has a lot of console.log() statements in the code.
-; You can make changes and then check how the player is functioning.
-; DEFAULT: "false"
-;webplayer_debug = "true"
-
 ; Waveform
 ; This settings tells Ampache to attempt to generate a waveform
 ; for each song. It requires transcode and encode_args_wav settings.
@@ -451,8 +440,8 @@ allow_zip_download = "{{cfg.ampache.features.zip_download}}"
 
 ; Temporary Directory Path
 ; If Waveform is enabled this must be set to tell
-; Ampache which directory to save the temporary file to. Do not put a
-; trailing slash or this will not work.
+; Ampache which directory to save the temporary file to.
+; Do not put a trailing slash or this will not work.
 ; DEFAULT: "false"
 ;tmp_dir_path = "/tmp"
 
@@ -484,9 +473,8 @@ use_auth = "true"
 ; Default Auth Level
 ; If use_auth is set to false then this option is used
 ; to determine the permission level of the 'default' users
-; default is administrator. This setting only takes affect
-; if use_auth is false
-; POSSIBLE VALUES: user, admin, manager, guest
+; This setting only takes affect if use_auth is false
+; POSSIBLE VALUES: guest, user, content_manager, manager, admin
 ; DEFAULT: guest
 default_auth_level = "guest"
 
@@ -879,14 +867,27 @@ log_path = "{{pkg.svc_path}}/logs"
 ; DEFAULT: %name.%Y%m%d.log
 log_filename = "%name.%Y%m%d.log"
 
+; API Debug Handler
+; If this is enabled Ampache will not catch exceptions during API calls.
+; Used for development and not recommended for regular use.
+; DEFAULT: "false"
+;api_debug_handler = "true"
+
+; Load the debug webplayer
+; This will load the *.js player instead of the *.min.js player
+; The unminified player has a lot of console.log() statements in the code.
+; You can make changes and then check how the player is functioning.
+; DEFAULT: "false"
+;webplayer_debug = "true"
+
 ;#########################################################
 ; Encoding Settings                                      #
 ;#########################################################
 
 ; Charset of generated HTML pages
 ; Default of UTF-8 should work for most people
-; DEFAULT: UTF-8
-site_charset = UTF-8
+; DEFAULT: "UTF-8"
+site_charset = "UTF-8"
 
 ; Locale Charset
 ; Local charset (mainly for file operations) if different
@@ -1146,17 +1147,17 @@ transcode_mp3 = "allowed"
 
 ; Default audio output format
 ; DEFAULT: none
-;encode_target = mp3
+;encode_target = "mp3"
 
 ; Default video output format
 ; DEFAULT: none
-;encode_video_target = webm
+;encode_video_target = "webm"
 
 ; Override the default output format on a per-type basis, for example,
 ; to stream lossless encoded files in lossy formats.
 ; encode_target_TYPE = TYPE
 ; DEFAULT: none
-;encode_target_flac = opus
+;encode_target_flac = "opus"
 
 ; Override the default TYPE transcoding behavior on a per-player basis, for example,
 ; to stream lossless using the api and lossy using the web interface.
@@ -1171,8 +1172,8 @@ transcode_mp3 = "allowed"
 ; encode_player_PLAYER_target = TYPE
 ; Valid PLAYER is: webplayer, api
 ; DEFAULT: none
-;encode_player_webplayer_target = mp3
-;encode_player_api_target = mp3
+;encode_player_webplayer_target = "mp3"
+;encode_player_api_target = "mp3"
 
 ; Allow clients to override transcode settings (output type, bitrate, codec ...)
 ; DEFAULT: "true"
@@ -1210,14 +1211,14 @@ transcode_input = "-i %FILE%"
 ; For each output format, you should provide the necessary arguments for
 ; your transcode_cmd.
 ; encode_args_TYPE = TRANSCODE_CMD_ARGS
-encode_args_mp3 = "-vn -b:a %BITRATE%K -c:a libmp3lame -f mp3 pipe:1"
-encode_args_ogg = "-vn -b:a %BITRATE%K -c:a libvorbis -f ogg pipe:1"
-encode_args_opus = "-vn -b:a %BITRATE%K -c:a libopus -compression_level 10 -f ogg pipe:1"
-encode_args_m4a = "-vn -b:a %BITRATE%K -c:a libfdk_aac -f adts pipe:1"
-encode_args_wav = "-vn -b:a %BITRATE%K -c:a pcm_s16le -f wav pipe:1"
-encode_args_flv = "-b:a %BITRATE%K -ar 44100 -ac 2 -v 0 -f flv -c:v libx264 -preset superfast -threads 0 pipe:1"
-encode_args_webm = "-b:a %BITRATE%K -f webm -c:v libvpx -preset superfast -threads 0 pipe:1"
-encode_args_ts = "-q %QUALITY% -s %RESOLUTION% -f mpegts -c:v libx264 -c:a libmp3lame -maxrate %MAXBITRATE%k -preset superfast -threads 0 pipe:1"
+encode_args_mp3 = "-vn -b:a %BITRATE% -c:a libmp3lame -f mp3 pipe:1"
+encode_args_ogg = "-vn -b:a %BITRATE% -c:a libvorbis -f ogg pipe:1"
+encode_args_opus = "-vn -b:a %BITRATE% -c:a libopus -compression_level 10 -f ogg pipe:1"
+encode_args_m4a = "-vn -b:a %BITRATE% -c:a libfdk_aac -f adts pipe:1"
+encode_args_wav = "-vn -b:a %BITRATE% -c:a pcm_s16le -f wav pipe:1"
+encode_args_flv = "-b:a %BITRATE% -ar 44100 -ac 2 -v 0 -f flv -c:v libx264 -preset superfast -threads 0 pipe:1"
+encode_args_webm = "-b:a %BITRATE% -f webm -c:v libvpx -preset superfast -threads 0 pipe:1"
+encode_args_ts = "-q %QUALITY% -s %RESOLUTION% -f mpegts -c:v libx264 -c:a libmp3lame -maxrate %MAXBITRATE% -preset superfast -threads 0 pipe:1"
 encode_args_ogv = "-codec:v libtheora -qscale:v 7 -codec:a libvorbis -qscale:a 5 -f ogg pipe:1"
 
 ; Encoding arguments to retrieve an image from a single frame
