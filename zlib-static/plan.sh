@@ -1,11 +1,11 @@
 pkg_name=zlib-static
 pkg_origin=rsertelon
-pkg_version=1.2.11
+pkg_version=1.3.1
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('Zlib')
 pkg_source="http://zlib.net/fossils/zlib-${pkg_version}.tar.gz"
 pkg_dirname="zlib-${pkg_version}"
-pkg_shasum="c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1"
+pkg_shasum="9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23"
 pkg_build_deps=(
   core/make
   core/gcc
