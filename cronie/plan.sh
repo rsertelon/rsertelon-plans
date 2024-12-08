@@ -1,12 +1,12 @@
 pkg_name=cronie
 pkg_origin=rsertelon
-pkg_version="1.7.1"
+pkg_version="1.7.2"
 pkg_upstream_url="https://github.com/cronie-crond/cronie"
 pkg_description="Cronie contains the standard UNIX daemon crond that runs specified programs at scheduled times and related tools."
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('GPL-2')
 pkg_source="https://github.com/cronie-crond/cronie/releases/download/cronie-${pkg_version}/cronie-${pkg_version}.tar.gz"
-pkg_shasum="78033100c24413f0c40f93e6138774d6a4f55bc31050567b90db45a2f9f1b954"
+pkg_shasum="f1da374a15ba7605cf378347f96bc8b678d3d7c0765269c8242cfe5b0789c571"
 pkg_deps=(
   core/glibc
 )
