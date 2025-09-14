@@ -6,7 +6,7 @@
 ; This value is used to detect if this config file is up to date
 ; this is compared against a constant called CONFIG_VERSION
 ; that is located in src/Config/Init/InitializationHandlerConfig.php
-config_version = 77
+config_version = 83
 
 ; Defines the default timezone used by the date functions
 ; Uses the same strings as the default date.timezone (https://php.net/date.timezone)
@@ -282,7 +282,7 @@ getid3_tag_order = "vorbiscomment,id3v2,id3v1,quicktime,matroska,ape,asf,avi,mpe
 ; POSSIBLE VALUES (builtins): filename and getID3
 ; POSSIBLE VALUES (plugins): MusicBrainz,TheAudioDb, plus any others you've installed.
 ; DEFAULT: getID3 filename
-metadata_order = "getID3,MusicBrainz,TheAudioDb,filename"
+metadata_order = "getID3,filename"
 
 ; This determines the order in which metadata sources are used (and in the
 ; case of plugins, checked) for video files
@@ -302,6 +302,13 @@ deferred_ext_metadata = "true"
 ; This setting takes a regex pattern. TODO: explain that this is not just for genres until we can replace this safely
 ; DEFAULT: "[/]{2}|[/\\|,;]" (Split on "//", "_", "/", "\", "|", "," and ";")
 additional_genre_delimiters = "[/]{2}|[_/\\|,;]"
+
+; Split Artist and Album Artist tags by regex; keeping the first result.
+; Some clients add a \\ to their tags to support multiple artists. Ampache assumes that these tags are a single name.
+; The string must not have spaces around the delimiter to allow for bands who use \\ in their name.
+; NOTE: This is usually a single string tag so it's not enabled by default. The final regex is '/[^ ]\\\\[^ ]/'
+; DEFAULT: "\\\\"
+;split_artist_regex = "\\\\"
 
 ; Enable importing custom metadata from files.
 ; This will need a bit of time during the import. So you may want to disable this
@@ -359,7 +366,7 @@ catalog_prefix_pattern = "The|An|A|Die|Das|Ein|Eine|Les|Le|La"
 ; Ignore files that match this pattern
 ; You can specify any file extension you want in here separating them with a |
 ; DEFAULT: None
-; catalog_ignore_pattern = "\(HTOA\)"
+;catalog_ignore_pattern = "\(HTOA\)"
 
 ; Catalog disable
 ; This defines if catalog can be disabled without removing database entries
@@ -385,6 +392,12 @@ catalog_prefix_pattern = "The|An|A|Die|Das|Ein|Eine|Les|Le|La"
 ; speed things up by checking modification date using filemtime() before loading
 ; DEFAULT: "false"
 ;catalog_verify_by_time = "true"
+
+; Catalog verify by album groups
+; Ampache will verify songs individually by default. If you enable this setting
+; We will update each album instead of just the individual songs.
+; DEFAULT: "false"
+;catalog_verify_by_album = "true"
 
 ;#########################################################
 ; Program Settings                                       #
@@ -657,6 +670,14 @@ album_art_min_height = 30
 ; DEFAULT: none
 ;album_art_max_height = 1024
 
+; Public Images
+; Disable this option to require a valid user session for viewing images.
+; When enabled, images can be displayed without checking for an active session,
+; bypassing `use_auth` and `require_session` settings.
+; If disabled, image links will require a valid session to be accessed.
+; DEFAULT: "true"
+public_images = "true"
+
 ; Resize Images * Requires PHP-GD *
 ; Set this to true if you want Ampache to resize the Album
 ; art on the fly, this increases load time and CPU usage
@@ -664,6 +685,13 @@ album_art_min_height = 30
 ; If you have high-quality album art and a small upload cap
 ; DEFAULT: "false"
 ;resize_images = "true"
+
+; Upscale Images * Requires PHP-GD *
+; Disable this option to prevent upscaling of images.
+; By default Ampache will scale images to display size * 2
+; This is useful for high DPI displays but does increase load times
+; DEFAULT: "true"
+;upscale_images = "false"
 
 ; Playlist Cover Art
 ; Set this to true if you want Ampache to generate
@@ -769,6 +797,20 @@ lastfm_api_secret = "{{cfg.ampache.lastfm.api_secret}}"
 ; Both id and secret are required to access the spotify catalog.
 ; DEFAULT: none
 ;spotify_client_secret = ""
+
+; MusicBrainz API username
+; If you make a lot of requests you should use your MusicBrainz API account
+; This can help with rate limiting as MusicBrainz servers limit all requests
+; Your account can be created at https://musicbrainz.org/register
+; DEFAULT: none
+;musicbrainz_username = ""
+
+; MusicBrainz API password
+; If you make a lot of requests you should use your MusicBrainz API account
+; This can help with rate limiting as MusicBrainz servers limit all requests
+; Your account can be created at https://musicbrainz.org/register
+; DEFAULT: none
+;musicbrainz_password = ""
 
 ; Wanted
 ; Set this to true to enable display missing albums and the
@@ -1111,6 +1153,14 @@ registration_display_fields = "fullname,website"
 ; POSSIBLE VALUES: fullname,website,state,city
 ; DEFAULT: "fullname"
 registration_mandatory_fields = "fullname"
+
+; User create field validation
+; Regex filters for username, fullname and website validation
+; If you run a site with public registration you may  want to
+; filter these fields for spam or other unwanted content.
+; DEFAULT: none
+;user_name_filter = "https?:\/\/"
+;user_website_filter = "\[url=http"
 
 ;#########################################################
 ; These options control the dynamic downsampling based   #
