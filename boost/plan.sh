@@ -26,7 +26,7 @@ pkg_build_deps=(
   core/gcc
   core/libxml2
   core/libxslt
-  core/openssl
+  core/openssl11
   core/which
   core/python
 )
