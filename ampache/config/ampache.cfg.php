@@ -6,7 +6,7 @@
 ; This value is used to detect if this config file is up to date
 ; this is compared against a constant called CONFIG_VERSION
 ; that is located in src/Config/Init/InitializationHandlerConfig.php
-config_version = 71
+config_version = 77
 
 ; Defines the default timezone used by the date functions
 ; Uses the same strings as the default date.timezone (https://php.net/date.timezone)
@@ -29,6 +29,16 @@ config_version = 71
 ; Either a binary name in $PATH as well as a fully qualified path is possible
 ; DEFAULT: composer
 ;composer_binary_path = "composer"
+
+; By default Ampache doesn't install dev packages using the --no-dev parameter
+; disable this setting to install dev packages (e.g. composer install --prefer-source --no-interaction)
+; DEFAULT: "true"
+composer_no_dev = "true"
+
+; This value allows to override the npm binary path to distinguish between multiple npm versions
+; Either a binary name in $PATH as well as a fully qualified path is possible
+; DEFAULT: npm
+;npm_binary_path = "npm"
 
 ; We sometimes need to talk and will show a warning to admin users
 ; Enable this setting if you don't want to see warnings (When we enable them)
@@ -107,7 +117,6 @@ database_password = {{cfg.ampache.database.password}}
 
 ; Set a default charset for your database
 ; Don't change this unless you understand how to BACKUP and RESTORE a database!
-;
 ; DEFAULT: "utf8mb4"
 ;database_charset = "utf8mb4"
 
@@ -121,6 +130,11 @@ database_password = {{cfg.ampache.database.password}}
 ;   http://www.unicode.org/Public/UCA/5.2.0/allkeys.txt
 ; DEFAULT: "utf8mb4_unicode_ci"
 ;database_collation = "utf8mb4_unicode_ci"
+
+; Set a default table engine for your database
+; Don't change this unless you understand how to BACKUP and RESTORE a database!
+; DEFAULT: "InnoDB"
+;database_engine = "InnoDB"
 
 ;#########################################################
 ; Session and Security                                   #
@@ -173,7 +187,7 @@ session_cookiesecure = 0
 ; This defines which auth methods Auth will attempt to use and in which order.
 ; If auto_create isn't enabled the user must exist locally.
 ; DEFAULT: mysql
-; VALUES: mysql,ldap,http,pam,external,openid
+; VALUES: mysql,ldap,http,pam,external
 auth_methods = "mysql"
 
 ; External authentication
@@ -210,6 +224,15 @@ access_control = "true"
 ; DEFAULT: "true"
 require_session = "true"
 
+; Webplayer Access Level
+; Set a minimum access level required to access the webplayer.
+; When a user does not meet the access requirements then you
+; are blocked from using the webplayer.
+; NOTE: This setting is ignored if you disable use_auth
+; POSSIBLE VALUES: guest, user, content_manager, manager, admin
+; DEFAULT: "user"
+webplayer_level = "user"
+
 ; Require LocalNet Session
 ; If this is set to true then Ampache will require that a valid session
 ; is passed even on hosts defined in the Local Network ACL. This setting
@@ -234,8 +257,8 @@ require_localnet_session = "true"
 ; Add a STREAMTOKEN to the account when a new user is created
 ; Streamtoken's allow a user to play without having a valid session (links do not expire)
 ; https://github.com/ampache/ampache/wiki/ampache6-details#allow-permalink-user-streams
-; DEFAULT: "false"
-;user_create_streamtoken = "true"
+; DEFAULT: "true"
+user_create_streamtoken = "true"
 
 ;#########################################################
 ; Metadata                                               #
@@ -264,7 +287,6 @@ metadata_order = "getID3,MusicBrainz,TheAudioDb,filename"
 ; This determines the order in which metadata sources are used (and in the
 ; case of plugins, checked) for video files
 ; POSSIBLE VALUES (builtins): filename and getID3
-; POSSIBLE VALUES (plugins): Tvdb,Tmdb,Omdb, plus any others you've installed.
 ; DEFAULT: "filename,getID3"
 metadata_order_video = "filename,getID3"
 
@@ -324,6 +346,14 @@ catalog_playlist_pattern = "m3u|m3u8|pls|asx|xspf"
 ; your music. You may add any prefix you want separating them with a |
 ; DEFAULT: The|An|A|Die|Das|Ein|Eine|Les|Le|La
 catalog_prefix_pattern = "The|An|A|Die|Das|Ein|Eine|Les|Le|La"
+
+; List Header Alphabetical String Pattern
+; This defines the string used in the list header when you check "Alphabet"
+; in browse pages. Each character will be split into single items
+; and will be applied as a regex to title of the objects being displayed.
+; NOTE: '#' (Digits or Punctuation) and '*' (All results) are added separately
+; DEFAULT: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+;alpha_string_pattern = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 ; Ignore Pattern
 ; Ignore files that match this pattern
@@ -438,6 +468,12 @@ allow_zip_download = "{{cfg.ampache.features.zip_download}}"
 ; DEFAULT: 400
 ;waveform_width = 400
 
+; Waveform draw flat
+; Don't print flat values on the canvas if not necessary
+; NOTE: This was hardcoded to true and doesn't 'seem' to do anything
+; DEFAULT: "true"
+;waveform_drawflat = "false"
+
 ; Temporary Directory Path
 ; If Waveform is enabled this must be set to tell
 ; Ampache which directory to save the temporary file to.
@@ -473,7 +509,7 @@ use_auth = "true"
 ; Default Auth Level
 ; If use_auth is set to false then this option is used
 ; to determine the permission level of the 'default' users
-; This setting only takes affect if use_auth is false
+; NOTE: This setting only takes affect if use_auth is false
 ; POSSIBLE VALUES: guest, user, content_manager, manager, admin
 ; DEFAULT: guest
 default_auth_level = "guest"
@@ -656,7 +692,7 @@ playlist_art = "true"
 ; method unless you want it to overwrite what's already in the
 ; database
 ; POSSIBLE VALUES (builtins): db tags folder spotify musicbrainz google
-; POSSIBLE VALUES (plugins): Amazon,TheAudioDb,Tmdb,Omdb,Flickr
+; POSSIBLE VALUES (plugins): Amazon,TheAudioDb,Flickr
 ; DEFAULT: db,tags,folder,spotify,musicbrainz
 art_order = "db,tags,folder,spotify,musicbrainz"
 
@@ -678,15 +714,16 @@ art_order = "db,tags,folder,spotify,musicbrainz"
 ;show_song_art = "true"
 
 ; Spotify Album art search filter
-;  Narrow the search.
-;  POSSIBLE VALUES:  artist,(year:1991 or year:1991-2000)
-; POSSIBLE  VALUES: empty string("") or commented out for no filter
+; Narrow the search using additional filters.
+; POSSIBLE VALUES: artist,(year:1991 or year:1991-2000)
+; POSSIBLE VALUES: empty string("") or commented out for no filter
+
 ; DEFAULT: none;
 ;spotify_art_filter = "artist"
 
 ; Art search limit
-;  Limit the total images returned
-;  DEFAULT: 15
+; Limit the total images returned
+; DEFAULT: 15
 ;art_search_limit = 15
 
 ; Recommendations
@@ -880,6 +917,13 @@ log_filename = "%name.%Y%m%d.log"
 ; DEFAULT: "false"
 ;webplayer_debug = "true"
 
+; Load Vite dev environment
+; This will load the Vite dev server scripts from scripts.inc.php
+; Not needed unless you're interested in Ampache JS dev
+; https://vite.dev/guide/
+; DEFAULT: "false"
+;vite_dev = "true"
+
 ;#########################################################
 ; Encoding Settings                                      #
 ;#########################################################
@@ -991,15 +1035,6 @@ site_charset = "UTF-8"
 ;ldap_member_attribute = "memberuid"
 
 ;#########################################################
-; OpenID login info (optional)                           #
-;#########################################################
-
-; Requires specific OpenID Provider Authentication Policy
-; DEFAULT: none
-; VALUES: PAPE_AUTH_MULTI_FACTOR_PHYSICAL,PAPE_AUTH_MULTI_FACTOR,PAPE_AUTH_PHISHING_RESISTANT
-;openid_required_pape = ""
-
-;#########################################################
 ; Public Registration settings, defaults to disabled     #
 ;#########################################################
 
@@ -1020,6 +1055,7 @@ site_charset = "UTF-8"
 ; recommended you leave this off, as it will allow anyone to
 ; sign up for an account on your server.
 ; REMEMBER: don't forget to set the mail from address further down in the config.
+; If you don't have an email server, make sure to enable user_no_email_confirm below
 ; DEFAULT: "false"
 ;allow_public_registration = "true"
 
@@ -1301,7 +1337,7 @@ send_full_stream = "webplayer"
 force_ssl = "{{cfg.ampache.force_ssl}}"
 
 ;#########################################################
-;  Mail Settings                                         #
+; Mail Settings                                          #
 ;#########################################################
 
 ; Enable or disable email server features
@@ -1337,14 +1373,14 @@ mail_user = "{{cfg.ampache.mail.user}}"
 ;mail_check = "strict"
 
 ;#########################################################
-;  sendmail Settings                                     #
+; sendmail Settings                                      #
 ;#########################################################
 
 ; DEFAULT: /usr/sbin/sendmail
 sendmail_path = "{{cfg.ampache.mail.sendmail.path}}"
 
 ;#########################################################
-;  SMTP Settings                                         #
+; SMTP Settings                                          #
 ;#########################################################
 
 ; Mail server (hostname or IP address)
