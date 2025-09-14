@@ -12,6 +12,7 @@ system:
     base_uri: ''
 database:
     encryption_key: BAIKAL_ENCRYPTION_KEY_VALUE
+    backend: 'mysql'
     sqlite_file: "absolute/path/to/Specific/db/db.sqlite"
     mysql: true
     mysql_host: '{{cfg.baikal.database.host}}'
