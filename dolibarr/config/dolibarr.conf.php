@@ -309,7 +309,7 @@ $dolibarr_main_prod='1';
 // $dolibarr_main_restrict_os_commands='mysqldump, /usr/local/bin/otherdumptool';
 // $dolibarr_main_restrict_os_commands='mariadb-dump, mariadb, mysqldump, mysql, pg_dump, pg_restore, clamdscan, clamdscan.exe';
 //
-$dolibarr_main_restrict_os_commands='mariadb-dump, mariadb, mysqldump, mysql, pg_dump, pg_restore, clamdscan, clamdscan.exe';
+$dolibarr_main_restrict_os_commands='mysqldump, mysql, pg_dump, pgrestore, mariadb, mariadb-dump';
 
 // dolibarr_main_disabled_modules
 // ==================================
