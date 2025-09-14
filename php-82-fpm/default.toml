@@ -1,0 +1,8 @@
+upload_max_size = "2M"
+
+max_children = 4
+min_children = 4
+
+[bind]
+    port = 8000
+    address = "127.0.0.1"
