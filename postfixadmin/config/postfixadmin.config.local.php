@@ -1,5 +1,6 @@
 <?php
 $CONF['configured'] = true;
+$CONF['version'] = '{{pkg.version}}';
 
 $CONF['setup_password'] = '{{cfg.postfixadmin.setup_password}}';
 
