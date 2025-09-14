@@ -19,7 +19,7 @@ pkg_deps=(
   core/libpng
   core/libxml2
   core/libzip
-  core/openssl
+  core/openssl11
   core/readline
   core/zip
   core/zlib
