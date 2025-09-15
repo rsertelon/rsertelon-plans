@@ -14,9 +14,13 @@ pkg_deps=(
   core/openssl
 )
 pkg_build_deps=(
+  core/autoconf
+  core/automake
   core/diffutils
   core/file
   core/gcc
+  core/libtool
+  core/patch
   core/make
   core/pkg-config
 )
@@ -30,6 +34,9 @@ do_prepare() {
     ln -sv "$(pkg_path_for file)/bin/file" /usr/bin/file
     _clean_file=true
   fi
+
+  patch -Np1 -i "$PLAN_CONTEXT/patches/openssl_1.1.0_compat.patch"
+  ACLOCAL_PATH="${ACLOCAL_PATH}:$(pkg_path_for core/pkg-config)/share/aclocal" autoreconf -i
 }
 
 do_build() {
