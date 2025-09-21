@@ -44,3 +44,9 @@ bind_address_ipv6 = ""
     port = 8080
     remote_path = "" # appended to the remote URI
     client_max_body_size = "2M"
+
+    [servers.locations.auth]
+    enabled = false
+    name = "Restricted Area"
+    # output of htpasswd -nb admin admin
+    credentials = "admin:$apr1$Hf868va7$O.K0bMvda/3.pyjd1ZL3Z/"

@@ -5,3 +5,14 @@ exec 2>&1
 # Nginx
 mkdir -p {{pkg.svc_var_path}}/nginx
 chown hab:hab {{pkg.svc_var_path}}
+
+base_auth_file_path={{pkg.svc_config_path}}
+
+{{#each cfg.servers as |server| ~}}
+{{~ #each server.locations as |location| ~}}
+{{~ #if location.auth.enabled ~}}
+filename="${base_auth_file_path}/htpasswd-{{location.port}}"
+echo '{{location.auth.credentials}}' > $filename
+{{~/if~}}
+{{~/each~}}
+{{~/each~}}
