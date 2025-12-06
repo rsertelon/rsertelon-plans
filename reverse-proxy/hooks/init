@@ -11,8 +11,7 @@ base_auth_file_path={{pkg.svc_config_path}}
 {{#each cfg.servers as |server| ~}}
 {{~ #each server.locations as |location| ~}}
 {{~ #if location.auth.enabled ~}}
-filename="${base_auth_file_path}/htpasswd-{{location.port}}"
-echo '{{location.auth.credentials}}' > $filename
-{{~/if~}}
+echo '{{location.auth.credentials}}' > "${base_auth_file_path}/htpasswd-{{location.port}}"
+{{/if~}}
 {{~/each~}}
 {{~/each~}}
