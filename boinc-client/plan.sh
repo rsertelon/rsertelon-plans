@@ -8,7 +8,7 @@ pkg_source="https://github.com/BOINC/boinc/archive/client_release/${pkg_version%
 pkg_dirname="boinc-client_release-${pkg_version%.*}-${pkg_version}"
 pkg_shasum="faaacaff557eba02fe9ae6f40402534b8bbf55343553bf42e1255b0d9f435ca0"
 pkg_deps=(
-  core/curl
+  rsertelon/curl
   core/gcc-libs
   core/glibc
   core/nghttp2
