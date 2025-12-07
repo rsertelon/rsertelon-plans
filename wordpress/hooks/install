@@ -1,0 +1,8 @@
+#!/bin/sh
+
+secret_keys_file="{{pkg.svc_path}}/wp-config-secrets.php"
+
+if [ ! -f $secret_keys_file ]; then
+    echo '<?php' > $secret_keys_file
+    curl -s https://api.wordpress.org/secret-key/1.1/salt/ >> $secret_keys_file
+fi

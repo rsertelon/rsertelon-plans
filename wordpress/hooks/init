@@ -1,0 +1,21 @@
+#!/bin/sh
+
+exec 2>&1
+
+## Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+
+chown -R hab:hab {{pkg.svc_var_path}}
+chown -R hab:hab {{pkg.svc_config_path}}
+
+## Wordpress
+# Replace sources
+rm -r {{pkg.svc_data_path}}/*
+cp -r {{pkg.path}}/wordpress/* {{pkg.svc_data_path}}/
+# Create symlink to content folder
+rm -r {{pkg.svc_data_path}}/wp-content
+ln -s {{cfg.wordpress.contents_location}} {{pkg.svc_data_path}}/wp-content
+# Copy config file
+cp {{pkg.svc_config_path}}/wp-config.php {{pkg.svc_data_path}}/wp-config.php
+
+chown -R hab:hab {{pkg.svc_data_path}}

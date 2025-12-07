@@ -1,0 +1,23 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[auth]
+  enabled = false
+  name = "Restricted Area"
+  credentials = [
+    # output of htpasswd -nb admin admin
+    "admin:$apr1$Hf868va7$O.K0bMvda/3.pyjd1ZL3Z/"
+  ]
+
+[wordpress]
+  debug = false
+  contents_location = "/my/contents/directory"
+  site_url = "https://mysite.tld"
+
+  [wordpress.db]
+  name = "wordpress"
+  table_prefix = "wp_"
+  user = "wordpress"
+  password = "wordpress"
+  host = "127.0.0.1"
