@@ -12,7 +12,7 @@ pkg_shasum="475f991afd2d5b901fb410be407d929bc00c46285d3f439a02c59e8b6fe3589c"
 pkg_deps=(
   core/bzip2
   core/coreutils
-  core/curl
+  rsertelon/curl
   core/glibc
   core/icu
   core/libjpeg-turbo
