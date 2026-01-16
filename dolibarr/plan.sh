@@ -1,5 +1,5 @@
 pkg_origin=rsertelon
-pkg_name=dolibarr
+pkg_name=dolibarr$index
 pkg_version="22.0.3"
 pkg_description="Dolibarr ERP & CRM is a modern software package that helps manage your organization's activity (contacts, suppliers, invoices, orders, stocks, agenda…)."
 pkg_upstream_url="https://www.dolibarr.org/"
