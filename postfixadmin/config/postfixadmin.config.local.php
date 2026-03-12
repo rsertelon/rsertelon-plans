@@ -34,3 +34,5 @@ $CONF['default_aliases'] = array (
 
 // Footer
 $CONF['footer_link'] = '{{cfg.postfixadmin.homepage_url}}';
+
+$CONF['encrypt'] = '{{cfg.postfixadmin.password_encryption}}';

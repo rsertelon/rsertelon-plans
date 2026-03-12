@@ -17,6 +17,7 @@
   setup_password = "$2y$10$iU5jY0NyL/ywdQ0khsZkD.j6e7gqW0jTF1ZWT78hjLbw51dlX.oYa"
   default_language = "en"
   homepage_url = "https://postfixadmin.domain.tld"
+  password_encryption = "php_crypt"
 
   [postfixadmin.database]
   # type can be one of:
