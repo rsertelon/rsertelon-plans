@@ -19,7 +19,7 @@ pkg_deps=(
   rsertelon/libconfig
 )
 
-pkg_bin_dirs=(bin)
+pkg_bin_dirs=(sbin)
 
 pkg_svc_user="hab"
 pkg_svc_group="hab"
@@ -38,5 +38,5 @@ do_build() {
 }
 
 do_install() {
-  DESTDIR="$pkg_prefix" cmake --install builddir
+  cmake --install builddir
 }
