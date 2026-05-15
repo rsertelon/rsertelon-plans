@@ -1,0 +1,31 @@
+ip_header = "X-Real-IP"
+listen_port = 8000
+public_url = "https://vault.domain.tld"
+user_data_directory="/var/data/vaultwarden"
+
+[admin]
+    ## Token for the admin interface, preferably an Argon2 PCH string
+    ## Vaultwarden has a built-in generator by calling `vaultwarden hash`
+    ## For details see: https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page#secure-the-admin_token
+    ## If not set, the admin panel is disabled
+    auth_token = ''
+
+[web-vault]
+    enabled = false
+
+[database]
+    username = "vaultwarden"
+    password = "vaultwarden"
+    hostname = "localhost"
+    port = 3306
+    name = "vaultwarden"
+
+[smtp]
+    enabled = false
+    host = "smtp.domain.tld"
+    port = 587
+    security = "starttls"
+    username = "vaultwarden"
+    password = "vaultwarden"
+    from = "vaultwarden@domain.tld"
+    from_name = "Vaultwarden"
