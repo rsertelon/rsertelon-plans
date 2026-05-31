@@ -5,7 +5,7 @@ pkg_upstream_url="http://www.opendkim.org"
 pkg_description="OpenDKIM is a community effort to develop and maintain a C library for producing DKIM-aware applications and an open source milter for providing DKIM service. "
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('BSD-3-Clause')
-pkg_source="https://freefr.dl.sourceforge.net/project/opendkim/opendkim-${pkg_version}.tar.gz"
+pkg_source="https://netix.dl.sourceforge.net/project/opendkim/opendkim-${pkg_version}.tar.gz"
 pkg_shasum="43a0ba57bf942095fe159d0748d8933c6b1dd1117caf0273fa9a0003215e681b"
 pkg_deps=(
   core/glibc

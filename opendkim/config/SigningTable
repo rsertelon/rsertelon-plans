@@ -1,3 +1,5 @@
 {{#each cfg.dkim.domains as |domain| ~}}
+{{#if domain.signing~}}
 {{domain.name}} {{domain.selector}}._domainkey.{{domain.name}}
+{{/if~}}
 {{/each ~}}

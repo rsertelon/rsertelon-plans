@@ -9,6 +9,9 @@ syslog_enabled = false
 [dkim]
   canonicalization_methods = ["relaxed", "simple"]
   trusted_hosts = ["127.0.0.1", "localhost"]
+  # Set to yes if you want to sign the same domain several times.
+  # For example, to sign both with RSA and ED keys.
+  multiple_signatures = "no"
 
   # This is the list of all domains that OpenDKIM will work for. You can generate
   # the configuration with:
@@ -19,3 +22,4 @@ syslog_enabled = false
     name = "<domain>"
     selector = "<selector>"
     private_key_path = "/path/to/private/key"
+    signing = true
