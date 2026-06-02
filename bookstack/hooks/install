@@ -1,0 +1,7 @@
+#!/bin/sh
+
+random_app_key="{{pkg.svc_path}}/random_app_key"
+
+if [ ! -f $random_app_key ]; then
+    echo -n "$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 32 | head -n 1)" > $random_app_key
+fi

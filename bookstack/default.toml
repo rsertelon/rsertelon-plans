@@ -1,0 +1,24 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[bookstack]
+  url = "https://example.com"
+  uploads_location = "/my/uploads/directory"
+
+  [bookstack.database]
+  host = "localhost"
+  port = 3306
+  name = "bookstack"
+  username = "username"
+  password = "password"
+
+  [bookstack.mail]
+  from = "bookstack@example.com"
+  from_name = "Bookstack"
+
+  [bookstack.mail.smtp]
+  host = "localhost"
+  port = 587
+  username = ""
+  password = ""

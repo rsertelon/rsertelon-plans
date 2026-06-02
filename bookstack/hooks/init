@@ -1,0 +1,29 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+
+chown -R hab:hab {{pkg.svc_var_path}}
+
+chown -R hab:hab {{pkg.svc_config_path}}
+config_file={{pkg.svc_data_path}}/.env
+
+# Bookstack
+# Replace sources
+rm -r {{pkg.svc_data_path}}/*
+cp -r {{pkg.path}}/bookstack/* {{pkg.svc_data_path}}/
+# Create symlink to content folder
+rm -r {{pkg.svc_data_path}}/storage/uploads
+ln -s {{cfg.bookstack.uploads_location}} {{pkg.svc_data_path}}/storage/uploads
+# Copy configuration file
+cp {{pkg.svc_config_path}}/bookstack.env $config_file
+# fill random app key from install-time generated value
+random_app_key=$(cat {{pkg.svc_path}}/random_app_key)
+sed -i "s/LARAVEL_APP_KEY_VALUE/${random_app_key}/" "${config_file}"
+# Execute SQL migrations
+cd {{pkg.svc_data_path}}
+hab pkg exec rsertelon/php-fpm-82 php artisan migrate --force
+
+chown -R hab:hab {{pkg.svc_data_path}}
