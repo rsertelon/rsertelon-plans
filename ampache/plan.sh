@@ -1,12 +1,12 @@
 pkg_name=ampache
 pkg_origin=rsertelon
-pkg_version="7.9.5"
+pkg_version="7.9.6"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("AGPL-3.0")
 pkg_upstream_url="http://ampache.org/"
 pkg_description="A web based audio/video streaming application and file manager allowing you to access your music & videos from anywhere, using almost any internet enabled device."
 pkg_source="https://github.com/ampache/ampache/archive/${pkg_version}.tar.gz"
-pkg_shasum="6f84551e177b67256192089b5e60dd9e28326b59555ea51bc1f336935300423d"
+pkg_shasum="e213f918d9f99970a09b3b7230f00aac02bf9f21269399d274e01429f1743069"
 pkg_filename="${pkg_version}.tar.gz"
 
 pkg_svc_user=root
@@ -38,10 +38,13 @@ do_install() {
   cp -r * "${pkg_prefix}/ampache/"
   cd $pkg_prefix/ampache
 
-  rm -rf vendor/* public/lib/components/*
-  rm -r docker/
+  rm -r docker*
+  rm -r docs*
+  rm -r tests/
+  rm phpstan*
+  rm phpunit.xml
 
-  composer install --no-interaction --no-dev --prefer-source
+  COMPOSER_ALLOW_SUPERUSER=1 composer install --no-interaction --no-dev --prefer-source
 
   npm install
   npm run build
