@@ -35,7 +35,7 @@ do_install() {
   cp -r * "${pkg_prefix}/bookstack/"
   cd $pkg_prefix/bookstack
 
-  composer install --no-interaction --no-dev
+  COMPOSER_ALLOW_SUPERUSER=1 composer install --no-interaction --no-dev
 }
 
 do_strip() {
