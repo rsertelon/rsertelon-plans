@@ -18,3 +18,5 @@
   host = "127.0.0.1"
   port = 3306
   allow_no_password = true
+  # If filled, only this user will be allowed to login
+  single_allowed_user = ""

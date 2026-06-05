@@ -34,6 +34,12 @@ $cfg['Servers'][$i]['host'] = '{{cfg.phpmyadmin.server.host}}';
 $cfg['Servers'][$i]['port'] = '{{cfg.phpmyadmin.server.port}}';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = {{cfg.phpmyadmin.server.allow_no_password}};
+{{#if cfg.phpmyadmin.server.single_allowed_user ~}}
+$cfg['Servers'][$i]['AllowDeny']['order'] = 'allow,deny';
+$cfg['Servers'][$i]['AllowDeny']['rules'] = array(
+        'allow {{cfg.phpmyadmin.server.single_allowed_user}} from all'
+);
+{{/if ~}}
 
 /**
  * phpMyAdmin configuration storage settings.

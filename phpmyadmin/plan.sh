@@ -29,3 +29,7 @@ do_install() {
   mkdir -p "${pkg_prefix}/phpmyadmin/"
   cp -r * "${pkg_prefix}/phpmyadmin/"
 }
+
+do_strip() {
+  return 0
+}
