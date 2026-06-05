@@ -25,10 +25,14 @@ pkg_binds=(
 )
 
 do_build(){
-  composer i --no-interaction
+  COMPOSER_ALLOW_SUPERUSER=1 composer i --no-interaction
 }
 
 do_install() {
   mkdir -p "${pkg_prefix}/postfixadmin/templates_c"
   cp -r * "${pkg_prefix}/postfixadmin/"
+}
+
+do_strip() {
+  return 0
 }

@@ -33,6 +33,12 @@ $CONF['default_aliases'] = array (
 );
 
 // Footer
+{{#if cfg.postfixadmin.homepage_url ~}}
+$CONF['show_footer_text'] = 'YES';
+$CONF['footer_text'] = 'Return to home';
 $CONF['footer_link'] = '{{cfg.postfixadmin.homepage_url}}';
+{{else ~}}
+$CONF['show_footer_text'] = 'NO';
+{{/if ~}}
 
 $CONF['encrypt'] = '{{cfg.postfixadmin.password_encryption}}';
