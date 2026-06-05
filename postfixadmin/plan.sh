@@ -17,7 +17,7 @@ pkg_deps=(
 )
 
 pkg_build_deps=(
-  core/composer
+  rsertelon/composer-82
 )
 
 pkg_binds=(
