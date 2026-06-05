@@ -1,6 +1,6 @@
 pkg_name=certbot
 pkg_origin=rsertelon
-pkg_version=3.0.1
+pkg_version=5.6.0
 pkg_maintainer='Romain Sertelon <romain@sertelon.fr>'
 pkg_license='Apache-2.0'
 pkg_upstream_url='https://certbot.eff.org'
