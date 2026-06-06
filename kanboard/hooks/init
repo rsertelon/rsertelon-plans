@@ -1,0 +1,15 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+
+chown -R hab:hab {{pkg.svc_var_path}}
+chown -R hab:hab {{pkg.svc_config_path}}
+
+# kanboard
+cp -r {{pkg.path}}/kanboard/* {{pkg.svc_data_path}}/
+cp {{pkg.svc_config_path}}/kanboard.config.php {{pkg.svc_data_path}}/config.php
+
+chown -R hab:hab {{pkg.svc_data_path}}
