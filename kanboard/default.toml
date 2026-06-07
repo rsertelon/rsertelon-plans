@@ -13,6 +13,8 @@
 [kanboard]
   plugin_installer = false
   storage_directory = "/tmp/kanboard"
+  # Value in seconds
+  session_duration = 0
 
   [kanboard.db]
   driver = "mysql"

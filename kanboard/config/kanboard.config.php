@@ -262,7 +262,7 @@ define('BRUTEFORCE_LOCKDOWN_DURATION', 15);
 
 // Session duration in second (0 = until the browser is closed)
 // See http://php.net/manual/en/session.configuration.php#ini.session.cookie-lifetime
-define('SESSION_DURATION', 0);
+define('SESSION_DURATION', {{cfg.kanboard.session_duration}});
 
 // Session handler: db or php
 define('SESSION_HANDLER', 'db');

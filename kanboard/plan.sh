@@ -25,7 +25,7 @@ do_build(){
 
 do_install() {
   mkdir -p "${pkg_prefix}/kanboard/"
-  attach
+
   rm -r data
   rm docker*
   rm CONTRIBUTING.md
