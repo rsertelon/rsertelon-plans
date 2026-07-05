@@ -1,12 +1,12 @@
 pkg_name=boinc-client
 pkg_origin=rsertelon
-pkg_version=8.2.13
+pkg_version=8.2.15
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=('LGPL-3.0')
 pkg_upstream_url="https://boinc.berkeley.edu/"
 pkg_source="https://github.com/BOINC/boinc/archive/client_release/${pkg_version%.*}/${pkg_version}.tar.gz"
 pkg_dirname="boinc-client_release-${pkg_version%.*}-${pkg_version}"
-pkg_shasum="05dfd2cb9fd87d7a6cc90690b090b6aca60def6cb98526324e88254dd5a4b056"
+pkg_shasum="59ab7ce2877e211ab627350544b0c21cd639ee46191d0b0d804320e539c246b2"
 pkg_deps=(
   rsertelon/curl
   core/gcc-libs
@@ -64,7 +64,7 @@ do_build() {
     --disable-unit-tests \
     CXXFLAGS="-O3 -funroll-loops -fforce-addr -ffast-math"
     
-  make
+  make -j ${nproc}
 }
 
 do_end() {
