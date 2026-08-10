@@ -1,6 +1,6 @@
 pkg_name=vaultwarden
 pkg_origin=rsertelon
-pkg_version="1.36.0"
+pkg_version="1.37.1"
 pkg_upstream_url="https://github.com/dani-garcia/vaultwarden"
 pkg_description="Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs ."
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
