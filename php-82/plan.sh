@@ -1,14 +1,14 @@
 pkg_name=php-82
 pkg_origin=rsertelon
-pkg_version=8.2.29
+pkg_version=8.2.33
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_license=("PHP-3.01")
 pkg_upstream_url=http://php.net/
 pkg_description="PHP is a popular general-purpose scripting language that is especially suited to web development."
-pkg_source="https://php.net/get/php-${pkg_version}.tar.xz/from/this/mirror"
+pkg_source="https://www.php.net/distributions/php-${pkg_version}.tar.xz"
 pkg_filename="php-${pkg_version}.tar.xz"
 pkg_dirname="php-${pkg_version}"
-pkg_shasum="475f991afd2d5b901fb410be407d929bc00c46285d3f439a02c59e8b6fe3589c"
+pkg_shasum="fbdeace9b38220436a4c8fd79b900df92878151db145e641750743a283b514c1"
 pkg_deps=(
   core/bzip2
   core/coreutils
