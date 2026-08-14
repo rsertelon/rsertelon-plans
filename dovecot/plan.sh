@@ -1,22 +1,22 @@
 pkg_name=dovecot
 pkg_origin=rsertelon
-pkg_version=2.3.21
+pkg_version=2.4.4
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_description="The Secure IMAP server"
 pkg_upstream_url="https://dovecot.org"
 pkg_license=("LGPL-2.1" "MIT")
-pkg_source="https://dovecot.org/releases/2.3/dovecot-${pkg_version}.tar.gz"
-pkg_shasum="05b11093a71c237c2ef309ad587510721cc93bbee6828251549fc1586c36502d"
+pkg_source="https://dovecot.org/releases/2.4/dovecot-${pkg_version}.tar.gz"
+pkg_shasum="670f98d55a29b02ae6a97281e51374e553b94496480ab0a07439571ab30ca8c3"
 
-pigeonhole_version=0.5.21.1
-pigeonhole_dirname="dovecot-2.3-pigeonhole-${pigeonhole_version}"
+pigeonhole_dirname="dovecot-pigeonhole-${pkg_version}"
 pigeonhole_filename="${pigeonhole_dirname}.tar.gz"
-pigeonhole_file_shasum="0377db284b620723de060431115fb2e7791e1df4321411af718201d6925c4692"
+pigeonhole_file_shasum="73c54f75359bf613c5c78e570ae98419f9295fe4451db6493e28ecb995bcd214"
 
 pkg_deps=(
   core/bzip2
   core/gcc-libs
   core/glibc
+  core/libsodium
   core/lz4
   core/mysql-client
   core/openssl
@@ -43,7 +43,7 @@ pkg_svc_group="root"
 do_download() {
   do_default_download
 
-  download_file "https://pigeonhole.dovecot.org/releases/2.3/${pigeonhole_filename}" "$pigeonhole_filename" "$pigeonhole_file_shasum"
+  download_file "https://pigeonhole.dovecot.org/releases/2.4/${pigeonhole_filename}" "$pigeonhole_filename" "$pigeonhole_file_shasum"
 }
 
 do_verify() {
@@ -79,7 +79,8 @@ do_build() {
   # build dovecot
   ./configure --prefix=${pkg_prefix} \
     --with-mysql \
-    --with-sql
+    --with-sql \
+    --with-sodium
 
   make -j$(nproc)
 

@@ -1,20 +1,4 @@
-[mysql]
-  host = "127.0.0.1"
-  port = 3306
-  username = "dovecot"
-  password = "dovecot"
-  dbname = "dovecot"
-
-  # Mandatory.
-  password_query = ""
-  password_scheme = "MD5-CRYPT" # http://wiki2.dovecot.org/Authentication/PasswordSchemes
-  # If set, a userdb will be added to the configuration
-  user_query = ""
-
 [ssl]
-  # if false, we still have ssl=yes see https://doc.dovecot.org/admin_manual/ssl/dovecot_configuration/
-  require_ssl = true 
-
   certificate_path = ""
   certificate_key_path = ""
   ciphers = [
@@ -37,19 +21,32 @@
   ]
   min_protocol = "TLSv1.2"
 
+[mysql]
+  host = "127.0.0.1"
+  port = 3306
+  username = "dovecot"
+  password = "dovecot"
+  dbname = "dovecot"
+
 [auth]
   auth_mechanisms = ["plain"]
-  disable_plaintext_auth = "yes"
+  allow_weak_schemes = "yes"
 
-  [auth.static_userdb]
-    enabled = true
+  # Package supports only MySQL db
+  [auth.password_db]
+    query = ""
+    # https://doc.dovecot.org/2.4.4/core/config/auth/schemes.html
+    default_scheme = "MD5-CRYPT"
+    
+  # Package supports only static db
+  [auth.user_db]
     uid = 500
     gid = 500
-    home = "/home/vmail/%d/%n"
+    home = "/home/vmail/%{user | domain}/%{user | username}"
 
 [mail]
   # The package uses maildir only, and passes LAYOUT=fs
-  location = "/home/vmail/%d/%n/Maildir"
+  location = "/home/vmail/%{user | domain}/%{user | username}/Maildir"
 
   [[mail.mailboxes]]
   name = "Drafts"
