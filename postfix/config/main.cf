@@ -55,9 +55,9 @@ smtpd_helo_required = yes
 smtpd_client_restrictions =
   permit_sasl_authenticated,
   reject_unknown_reverse_client_hostname,
-  {{#each cfg.smtpd.rbls as |rbl| ~}}
+  {{#each cfg.smtpd.rbls as |rbl|}}
   reject_rbl_client {{rbl}},
-  {{/each ~}}
+  {{/each}}
   permit
 
 # Ensure client presents itself propertly

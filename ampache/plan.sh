@@ -18,7 +18,7 @@ pkg_deps=(
 
 pkg_build_deps=(
   core/coreutils
-  rsertelon/node20
+  core/node
   rsertelon/composer-82
 )
 

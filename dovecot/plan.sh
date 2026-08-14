@@ -18,8 +18,9 @@ pkg_deps=(
   core/gcc-libs
   core/glibc
   core/lz4
-  rsertelon/mysql-client
+  core/mysql-client
   core/openssl
+  core/libxcrypt
   core/zlib
 )
 pkg_build_deps=(

@@ -12,30 +12,33 @@ pkg_shasum="fbdeace9b38220436a4c8fd79b900df92878151db145e641750743a283b514c1"
 pkg_deps=(
   core/bzip2
   core/coreutils
-  rsertelon/curl
+  core/curl
   core/glibc
   core/icu
+  core/libidn2
   core/libjpeg-turbo
   core/libpng
   core/libxml2
-  core/libzip
-  core/openssl11
+  rsertelon/libzip
+  core/openssl
   core/readline
-  core/zip
+  rsertelon/zip
   core/zlib
   core/gcc-libs
   core/oniguruma
   core/sqlite
   core/libpsl
   core/nghttp2
+  core/zstd
 )
 pkg_build_deps=(
   core/autoconf
   core/bison
   core/gcc
-  core/libgd
+  rsertelon/libgd
   core/make
   core/re2c
+  core/pkg-config
 )
 pkg_bin_dirs=(bin sbin)
 pkg_lib_dirs=(lib)

@@ -11,7 +11,7 @@ pkg_deps=(
   core/glibc
   core/libbsd
   rsertelon/libmilter
-  core/openssl11
+  core/openssl
 )
 pkg_build_deps=(
   core/autoconf
