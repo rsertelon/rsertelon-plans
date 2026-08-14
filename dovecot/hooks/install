@@ -8,12 +8,12 @@ then
 fi
 
 # User needed for authentication
-if [ $(getent passwd dovenull) == "" ]
+if [ -z "$(getent passwd dovenull)" ]
 then
   useradd -M dovenull
 fi
 # User needed for dropping privileges
-if [ $(getent passwd dovecot) == "" ]
+if [ -z "$(getent passwd dovecot)" ]
 then
   useradd -M dovecot
 fi
