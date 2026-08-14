@@ -1,17 +1,17 @@
 pkg_name=dovecot
 pkg_origin=rsertelon
-pkg_version=2.3.20
+pkg_version=2.3.21
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_description="The Secure IMAP server"
 pkg_upstream_url="https://dovecot.org"
 pkg_license=("LGPL-2.1" "MIT")
 pkg_source="https://dovecot.org/releases/2.3/dovecot-${pkg_version}.tar.gz"
-pkg_shasum="caa832eb968148abdf35ee9d0f534b779fa732c0ce4a913d9ab8c3469b218552"
+pkg_shasum="05b11093a71c237c2ef309ad587510721cc93bbee6828251549fc1586c36502d"
 
-pigeonhole_version=0.5.20
+pigeonhole_version=0.5.21.1
 pigeonhole_dirname="dovecot-2.3-pigeonhole-${pigeonhole_version}"
 pigeonhole_filename="${pigeonhole_dirname}.tar.gz"
-pigeonhole_file_shasum="ae32bd4870ea2c1328ae09ba206e9ec12128046d6afca52fbbc9ef7f75617c98"
+pigeonhole_file_shasum="0377db284b620723de060431115fb2e7791e1df4321411af718201d6925c4692"
 
 pkg_deps=(
   core/bzip2
