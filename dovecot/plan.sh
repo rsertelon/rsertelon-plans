@@ -78,6 +78,7 @@ do_prepare() {
 do_build() {
   # build dovecot
   ./configure --prefix=${pkg_prefix} \
+    --localstatedir=${pkg_svc_var_path} \
     --with-mysql \
     --with-sql \
     --with-sodium
