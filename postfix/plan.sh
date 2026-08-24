@@ -1,12 +1,12 @@
 pkg_name=postfix
-pkg_origin=core
-pkg_version="3.7.4"
+pkg_origin=rsertelon
+pkg_version="3.11.6"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_description="Wietse Venema's mail server that started life at IBM research as an alternative to the widely-used Sendmail program."
 pkg_upstream_url="http://www.postfix.org/"
 pkg_license=('IPL-1.0')
 pkg_source="http://postfix.mirrors.ovh.net/postfix-release/official/postfix-${pkg_version}.tar.gz"
-pkg_shasum="4c137a2303448f25993836837deeae87fac5d4d03af11ade8e9bead806328645"
+pkg_shasum="b9a748705b1cab0a4afcbe42f934c82a33b342ba3229017fb508c71700078d07"
 pkg_build_deps=(
   core/make
   core/gcc
@@ -16,10 +16,11 @@ pkg_build_deps=(
 )
 pkg_deps=(
   core/coreutils
+  core/db
   core/glibc
-  core/libnsl
-  rsertelon/mysql-client
-  core/openssl11
+  rsertelon/libnsl
+  core/mysql-client
+  core/openssl
   core/zlib
 )
 pkg_bin_dirs=(bin sbin libexec)
@@ -29,13 +30,14 @@ pkg_svc_user="root"
 pkg_svc_group="root"
 
 do_build() {
-  local mycc="-DNO_DB -DNO_NIS -DNO_PCRE"
-  mycc="${mycc} -DHAS_MYSQL -I$(pkg_path_for "rsertelon/mysql-client")/include"
+  local mycc="-DNO_NIS -DNO_PCRE"
+  mycc="${mycc} -DHAS_DB -I$(pkg_path_for "core/db")/include"
+  mycc="${mycc} -DHAS_MYSQL -I$(pkg_path_for "core/mysql-client")/include"
   mycc="${mycc} -DUSE_SASL_AUTH"
-  mycc="${mycc} -DUSE_TLS -I$(pkg_path_for "core/openssl11")/include"
+  mycc="${mycc} -DUSE_TLS -I$(pkg_path_for "core/openssl")/include"
 
-  local myauxlibs="-L$(pkg_path_for "core/openssl11")/lib -lssl -lcrypto -L$(pkg_path_for "core/glibc")/lib -lresolv"
-  local myauxlibs_mysql="-L$(pkg_path_for "rsertelon/mysql-client")/lib -lmysqlclient -L$(pkg_path_for "core/zlib")/lib -lz -lm"
+  local myauxlibs="-L$(pkg_path_for "core/openssl")/lib64 -lssl -lcrypto -L$(pkg_path_for "core/glibc")/lib -L$(pkg_path_for "core/db")/lib -ldb -lresolv"
+  local myauxlibs_mysql="-L$(pkg_path_for "core/mysql-client")/lib -lmysqlclient -L$(pkg_path_for "core/zlib")/lib -lz -lm"
 
   make makefiles \
     shared=yes \

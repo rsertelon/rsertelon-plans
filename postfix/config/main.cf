@@ -1,4 +1,4 @@
-compatibility_level = 2
+compatibility_level = 3.11
 
 ## Bind
 inet_protocols = ipv4, ipv6
