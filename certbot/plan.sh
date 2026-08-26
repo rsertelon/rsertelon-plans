@@ -8,7 +8,11 @@ pkg_description='The Certbot LetsEncrypt client.'
 pkg_deps=(
   'core/bash'
   'core/findutils'
+  'core/gcc-libs'
   'core/python'
+)
+pkg_build_deps=(
+  'core/patchelf'
 )
 pkg_plugins=(
   'dns-rfc2136'
@@ -30,6 +34,9 @@ do_install() {
   do
     pip install "$pkg_name-$plugin==$pkg_version"
   done
+
+  find "$pkg_prefix/lib" -type f -name "*.so" \
+    -exec patchelf --set-rpath "${LD_RUN_PATH}" {} \;
 }
 
 do_strip() {
