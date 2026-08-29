@@ -1,0 +1,19 @@
+#!/bin/sh
+
+exec 2>&1
+
+# Nginx
+mkdir -p {{pkg.svc_var_path}}/nginx
+
+chown -R hab:hab {{pkg.svc_var_path}}
+chown -R hab:hab {{pkg.svc_config_path}}
+
+# roundcube
+cp -r {{pkg.path}}/roundcube/* {{pkg.svc_data_path}}/
+cp {{pkg.svc_config_path}}/roundcube.config.inc.php {{pkg.svc_data_path}}/config/config.inc.php
+
+ln -s {{pkg.svc_data_path}}/skins {{pkg.svc_data_path}}/public_html/skins
+ln -s {{pkg.svc_data_path}}/plugins {{pkg.svc_data_path}}/public_html/plugins
+ln -s {{pkg.svc_data_path}}/program {{pkg.svc_data_path}}/public_html/program
+
+chown -R hab:hab {{pkg.svc_data_path}}

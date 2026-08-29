@@ -1,0 +1,38 @@
+[bind]
+  address = "127.0.0.1"
+  port = 8080
+
+[auth]
+  enabled = false
+  name = "Restricted Area"
+  credentials = [
+    # output of htpasswd -nb admin admin
+    "admin:$apr1$Hf868va7$O.K0bMvda/3.pyjd1ZL3Z/"
+  ]
+
+[roundcube]
+  name = "Roundcube Webmail"
+
+  [roundcube.database]
+  # provider can be one of: mysql, pgsql, sqlite
+  provider = "mysql"
+  host = "localhost"
+  username = "postfix"
+  password = "postfixadmin"
+  name = "postfix"
+
+  [roundcube.imap]
+  # security can be one of: ssl, tls
+  security = "tls"
+  host = "imap.domain.tld"
+  port = 143
+
+  [roundcube.smtp]
+  # security can be one of: ssl, tls
+  security = "tls"
+  host = "smtp.domain.tld"
+  port = 587
+  # auth_user set to empty if no auth is required
+  auth_user = "%u" #might require fixing.
+  # auth_pass set to empty if no auth is required
+  auth_pass = "%p"
