@@ -1,12 +1,12 @@
 pkg_name=kanboard
 pkg_origin=rsertelon
-pkg_version="1.2.53"
+pkg_version="1.2.54"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("MIT")
 pkg_upstream_url="https://kanboard.org/"
 pkg_description="Kanboard is a free and open source Kanban project management software."
 pkg_source="https://github.com/kanboard/kanboard/archive/refs/tags/v${pkg_version}.tar.gz"
-pkg_shasum="12ad42a26c7eecba1d156fa6b05af0575e07232bb72fad64b232097df6e9ec9f"
+pkg_shasum="67ddc4570bc56701c1ff6667eb0410a5d288cd642efd012e387119b64dd9e408"
 
 pkg_svc_user=root
 pkg_svc_group=$pkg_svc_user
