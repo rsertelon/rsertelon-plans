@@ -1,12 +1,12 @@
 pkg_name=bookstack
 pkg_origin=rsertelon
-pkg_version="26.05"
+pkg_version="26.05.4"
 pkg_maintainer="Romain Sertelon <romain@sertelon.fr>"
 pkg_license=("MIT")
 pkg_upstream_url="https://www.bookstackapp.com/"
 pkg_description="BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information."
 pkg_source="https://codeberg.org/bookstack/bookstack/archive/v${pkg_version}.tar.gz"
-pkg_shasum="850168e0aff5a06950ca07f517f9ee738dea9cfdc8b209c24d41a30cce4e1fba"
+pkg_shasum="7322ef1f196cd6ab0f78abf4c01553d2d28f1bb61428c9e61d100615d14a6d36"
 pkg_dirname="${pkg_name}"
 pkg_filename="${pkg_name}-v${pkg_version}.tar.gz"
 
