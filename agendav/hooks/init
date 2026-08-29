@@ -8,10 +8,10 @@ chown hab:hab {{pkg.svc_var_path}}
 
 # AgenDAV
 cp -r {{pkg.path}}/agendav/* {{pkg.svc_data_path}}/
-cp {{pkg.svc_config_path}}/agendav.settings.php {{pkg.svc_data_path}}/web/config/settings.php
+cp {{pkg.svc_config_path}}/agendav.settings.php {{pkg.svc_data_path}}/config/settings.php
 
 chown -R hab:hab {{pkg.svc_data_path}}
 
 pushd  {{pkg.svc_data_path}}
-    php agendavcli migrations:migrate
+    bin/agendavcli migrations:migrate
 popd
