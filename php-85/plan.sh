@@ -57,7 +57,6 @@ do_build() {
     --with-jpeg \
     --with-libxml \
     --with-openssl \
-    --with-xmlrpc \
     --with-zip \
     --with-zlib \
     --with-bz2="$(pkg_path_for bzip2)" \
@@ -66,7 +65,6 @@ do_build() {
     --enable-calendar \
     --enable-exif \
     --enable-mbstring \
-    --enable-opcache \
     --enable-gd \
     --enable-intl
 
