@@ -9,13 +9,19 @@ chown -R hab:hab {{pkg.svc_var_path}}
 chown -R hab:hab {{pkg.svc_config_path}}
 
 ## Wordpress
+if [ ! -d {{cfg.wordpress.contents_location}} ]; then
+  echo "ERROR: {{cfg.wordpress.contents_location}} does not exist. Create it (and set ownership) before starting this service." >&2
+  exit 1
+fi
 # Replace sources
 rm -r {{pkg.svc_data_path}}/*
 cp -r {{pkg.path}}/wordpress/* {{pkg.svc_data_path}}/
+# Make sure package's wp-content is copied over (upgrades require it)
+cp -r {{pkg.svc_data_path}}/wp-content/. {{cfg.wordpress.contents_location}}/
 # Create symlink to content folder
 rm -r {{pkg.svc_data_path}}/wp-content
 ln -s {{cfg.wordpress.contents_location}} {{pkg.svc_data_path}}/wp-content
 # Copy config file
 cp {{pkg.svc_config_path}}/wp-config.php {{pkg.svc_data_path}}/wp-config.php
 
-chown -R hab:hab {{pkg.svc_data_path}}
+chown -R -L hab:hab {{pkg.svc_data_path}}
